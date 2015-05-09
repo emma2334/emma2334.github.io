@@ -39,7 +39,7 @@ $(function(){
 $(function(){
   $('#timeline_extend').click(function(){
     var a=$('#toggle').prop("checked");
-    $('#extension').slideToggle();
+    $('#extension').animate({height: 'toggle'}, 'slow');
 
     if(a==0){
       $('#timeline_extend').find('span').html('hide all');

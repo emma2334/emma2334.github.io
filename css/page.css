@@ -281,9 +281,11 @@ blockquote:after {
   cursor: pointer;
 }
 
+#timeline .title{
+  margin-top: 3em;
+}
 #extension{
   display: none;
-  padding-top: 3em;
 }
 
 #extension .grid figure {
