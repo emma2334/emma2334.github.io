@@ -20,33 +20,8 @@ $(function () {
   }
 });
 
-$(document).ready(function(){
-  var month={01: "Jan", 02: "Feb", 03: "Mar", 04: "Apr", 05: "May", 06: "Jun", 07: "Jul", 08: "Aug", 09: "Sep", 10: "Oct", 11: "Nov", 12: "Dec"};
-  for(var i=0; i<$('.item').length; i++){
-    var date=$('.item').eq(i).attr('data-id').split('/');
-    $('.item').eq(i).find("div.post_date").html(date[0]+"<span>"+month[parseInt(date[1])]+"</span>");
-    var name="<h2>"+$('.item').eq(i).attr('data-description')+"</h2>";
-    $('.item').eq(i).children("span").before(name);
-  }
-});
-
 $(function(){
   $('.image_rollover_bottom').click(function(){
     $('body').css('overflow', 'hidden');
-  });
-});
-
-$(function(){
-  $('#timeline_extend').click(function(){
-    var a=$('#toggle').prop("checked");
-    $('#extension').animate({height: 'toggle'}, 'slow');
-
-    if(a==0){
-      $('#timeline_extend').find('span').html('hide all');
-      $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-up');
-    }else{
-      $('#timeline_extend').find('span').html('view all at once');
-      $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-down');
-    }
   });
 });
