@@ -205,14 +205,14 @@ figure.effect-zoe p.icon-links a {
 
 figure.effect-zoe:hover p.icon-links a:hover,
 figure.effect-zoe:hover p.icon-links a:focus {
-	color: #252d31;
+	color: #5B747E;
 }
 
 figure.effect-zoe p.description {
 	text-align: left;
 	position: absolute;
 	bottom: 8em;
-	padding: 2em;
+	padding: 2em 2em 0em 2em;
 	color: #fff;
 	text-transform: none;
 	font-size: 90%;
@@ -237,18 +237,6 @@ figure.effect-zoe p.icon-links a span::before {
 	speak: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon-eye::before {
-	content: '\e000';
-}
-
-.icon-paper-clip::before {
-	content: '\e001';
-}
-
-.icon-heart::before {
-	content: '\e024';
 }
 
 figure.effect-zoe h2 {
@@ -288,6 +276,23 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 
 #works .grid figure {
 	width: 48%;
+}
+
+figure.effect-zoe {
+  cursor: default;
+}
+
+figure.effect-zoe a:hover {
+  cursor: pointer;
+}
+
+figure.effect-zoe p.description a {
+  color: #3c4a50;
+  font-weight: bold;
+}
+
+figure.effect-zoe p.description a:hover {
+  color: #EDF9FF;
 }
 
 /* ------------------------------------------ */

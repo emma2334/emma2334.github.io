@@ -19,26 +19,3 @@ $(function () {
     n.attr('data-original-title', e[k]);
   }
 });
-
-$(function(){
-  $('.image_rollover_bottom').click(function(){
-    $('body').css('overflow', 'hidden');
-  });
-});
-
-$(function(){
-  $('figure.effect-zoe').hover(
-    function(){
-      $(this).find('.mask').css('opacity', '0.3');
-    },
-    function(){
-      $(this).find('.mask').css('opacity', '');
-    });
-});
-
-function github_alert(){
-  alert("It's a private repository.");
-}
-function link_alert(){
-  alert("The link is empty.");
-}

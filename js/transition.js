@@ -10,11 +10,11 @@
     // if((0.6-e*2)>0) b.css( "opacity", (0.6-e*3) );
     // else b.css("opacity", 0);
     if(c>0){
-      a.css( "opacity", 4*c );
-      b.css( "opacity", 3*c );
+      a.css("opacity", 4*c);
+      b.css("opacity", 3*c);
     }else{
-      a.css( "opacity", (0) );
-      b.css( "opacity", (0) );
+      a.css("opacity", 0);
+      b.css("opacity", 0);
     }
 
 
@@ -25,7 +25,7 @@
       $('#about').removeClass("transparent");
     }
 
-    if(($('#skills').offset().top-progress)<$(window).height()/1.5){
+    if(($('#skills').offset().top-progress)<$(window).height()/2.5){
       for(var i=0; i<$('.score').length; i++){
         var level = $('.score').eq(i).attr('data-score');
         $('.score').eq(i).addClass('score-'+level);

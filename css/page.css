@@ -52,7 +52,7 @@ object{
   z-index: 1050;
 }
 
-a{
+a, a:visited, a:link{
   color: #dd5555;
   text-decoration: none;
 }
@@ -301,6 +301,17 @@ blockquote:after {
 
 #extension .grid{
   padding: 0 0 0;
+}
+
+
+/*---------------------------
+  section#works
+---------------------------*/
+.modal{
+  text-align: left;
+}
+.modal-header a{
+  margin-left: 10px;
 }
 
 
