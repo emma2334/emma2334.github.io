@@ -1,5 +1,5 @@
 body{
-  font-family: "Raleway",sans-serif;
+  font-family: "Raleway", Helvetica, sans-serif, 微軟正黑體;
   background-color: #FBF8F1;
 }
 
@@ -32,9 +32,19 @@ header.title h2, h4{
   display: inline-block;
 }
 
+header.title h2{
+  font-family: Courier New;
+  font-weight: bold;
+  display: inline-block;
+}
+
 header.title h2 span{
   padding-left: 5px;
   padding-right: 5px;
+}
+
+header.title h4, div.title{
+  font-family: "Raleway";
 }
 
 div.title{
@@ -73,6 +83,7 @@ a:hover{
   background: transparent;
 }
 #slogan{
+  font-family: "Raleway";
   position: absolute;
   opacity: 0.6;
   background-color: black;
@@ -269,6 +280,7 @@ blockquote:after {
   section#timeline
 ---------------------------*/
 #timeline_extend{
+  font-weight: initial;
   display: block;
   text-align: center;
   padding-top: 2em;
