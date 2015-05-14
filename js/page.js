@@ -19,3 +19,10 @@ $(function () {
     n.attr('data-original-title', e[k]);
   }
 });
+
+function github_alert(){
+      alert("It's a private repository.");
+    }
+    function link_alert(){
+      alert("The link is empty.");
+    }

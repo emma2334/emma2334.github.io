@@ -326,6 +326,9 @@ blockquote:after {
   margin-left: 10px;
 }
 
+.modal-title{
+  font-weight: bold;
+}
 
 /*---------------------------
   section#contact

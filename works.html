@@ -20,8 +20,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <h4 class="modal-title" id="myLargeModalLabel">中興大學機構典藏 </h4><a title="URL" href="http://ir.lib.nchu.edu.tw/" target="_blank"><i class="fa fa-external-link"></i></a>
-          <a class="anchorjs-link" href="#myModalLabel"><span class="anchorjs-icon"></span></a>
+          <h4 class="modal-title" id="myLargeModalLabel">中興大學機構典藏</h4>
+          <a title="URL" href="http://ir.lib.nchu.edu.tw/" target="_blank"><i class="fa fa-external-link"></i></a>
         </div>
         <div class="modal-body">
           <p>
@@ -58,7 +58,37 @@
         <a title="URL" onclick="link_alert()"><i class="fa fa-external-link"></i></a>
         <a title="GitHub" onclick="github_alert()"><i class="fa fa-github"></i></a>
       </p>
-      <p class="description">系上專題的產物。<br>Based on PHP</p>
+      <p class="description">
+        系上專題的產物。<br>Based on PHP<br><br>
+        <a data-toggle="modal" data-target="#pia">【 more 】</a>
+      </p>
     </figcaption>
   </figure>
+  <div class="modal fade bs-example-modal-lg" id="pia" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myLargeModalLabel">個資稽核系統</h4>
+          <a title="URL" onclick="link_alert()"><i class="fa fa-external-link"></i></a>
+        </div>
+        <div class="modal-body">
+          <p>
+            系上大三專題的產物。由於之後是給學校計算機中心的人員維護，因此用他們比較常用的語言（JSP）。為了切成 MVC 架構花了我們兩三個月的時間，最後組長大大一個不爽，花了一天的時間用 PHP 寫到當時的進度。接著我們就開始超英趕美，整個開發進度up！<br><br>
+          </p>
+
+          <img src="./img/works/content/pia.png" class="img-responsive"><br><br>
+
+          <p>
+            由於伺服器被關閉了，所以也沒辦法做更多介紹XD。<br><br>
+          </p>
+
+          <p>
+            【組員】<br>
+            <a href="https://github.com/abcd4913" target="_blank">abcd4913</a>、<a href="https://github.com/chgu82837" target="_blank">chgu82837</a>、<a href="https://github.com/emma2334" target="_blank">emma2334</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
