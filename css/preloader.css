@@ -7,7 +7,7 @@
   z-index: 9100 !important;
   width: 100%;
   height: 100%;
-  background-color: #FBF8F1;
+  background: white url("../img/preloader.gif") no-repeat center;
 }
 #preload .pace {
   font-family: Courier New;
