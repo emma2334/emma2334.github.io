@@ -3,7 +3,7 @@
   $window=$(window);
   fullPage=$(".full-page");
   fullPage.height($window.height());
-  $(window).on("resize",function(e){$('.parallax').css('width', $(window).width());return fullPage.height($window.height());});
+  $(window).on("resize",function(e){return fullPage.height($window.height());});
 }).call(this);
 
 $(function () {
@@ -23,6 +23,6 @@ $(function () {
 function github_alert(){
       alert("It's a private repository.");
     }
-    function link_alert(){
-      alert("The link is empty.");
-    }
+function link_alert(){
+  alert("The link is empty.");
+}

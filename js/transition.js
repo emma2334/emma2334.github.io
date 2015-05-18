@@ -5,10 +5,6 @@
     var e = progress/$(window).height();
 
     var a=$('#scroll-down-notice'), b=$('#slogan'), c=0.2-e;
-    // if(0.8-e*4>0) a.css( "opacity", (0.8-e*4) );
-    // else a.css("opacity", 0);
-    // if((0.6-e*2)>0) b.css( "opacity", (0.6-e*3) );
-    // else b.css("opacity", 0);
     if(c>0){
       a.css("opacity", 4*c);
       b.css("opacity", 3*c);
