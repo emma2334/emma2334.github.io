@@ -1,5 +1,8 @@
 $.get('./timeline.html', function(data){
   $('#timeline').append(data);
+  $("#timeline img.lazy").lazyload({
+      effect : "fadeIn"
+    });
   $.getScript('./js/jquery.timeline.min.js');
   $.getScript('./js/jquery.mCustomScrollbar.js');
   $.getScript('./js/jquery.easing.1.3.js');

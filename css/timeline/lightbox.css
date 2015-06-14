@@ -28,7 +28,7 @@ body:after {
   line-height: 0;
   font-weight: normal;
   position: fixed;
-  top: 10% !important;
+  top: 5% !important;
 }
 /* line 28, ../sass/lightbox.sass */
 .lightbox .lb-image {
@@ -184,7 +184,7 @@ body:after {
   clear: left;
   padding-bottom: 1em;
   font-size: 12px;
-  color: #999999;
+  color: #FFF;
 }
 /* line 121, ../sass/lightbox.sass */
 .lb-data .lb-close {

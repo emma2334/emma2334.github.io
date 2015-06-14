@@ -26,3 +26,19 @@ function github_alert(){
 function link_alert(){
   alert("The link is empty.");
 }
+
+$(function() {
+  $("img.lazy").lazyload({
+    // effect : "fadeIn"
+  });
+});
+
+$(function(){
+  var a=$('#activity .grid ');
+  console.log(a.width());
+
+    // a.height(a.width()/4*3);
+  $(window).on('resize', function(){
+    // a.css(a.height(a.width()/4*3));
+  });
+});

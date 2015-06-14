@@ -88,11 +88,11 @@
 }
 
 /* facebook */
-.icon-mono.facebook {
+.icon-mono.face_book {
   background-position: 0 0;
 }
 
-.icon-mono.facebook:hover {
+.icon-mono.face_book:hover {
   background-color: #3b5998;
   background-position: 0 -96px;
 }
@@ -108,11 +108,11 @@
 }
 
 /* google plus */
-.icon-mono.googleplus {
+.icon-mono.g_plus {
   background-position: -192px 0;
 }
 
-.icon-mono.googleplus:hover {
+.icon-mono.g_plus:hover {
   background-color: #d34836;
   background-position: -192px -96px;
 }
