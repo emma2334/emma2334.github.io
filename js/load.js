@@ -10,10 +10,10 @@ $(function(){
         $.getScript('./js/jquery.easing.1.3.js');
         $.getScript('./js/image.js');
         $.getScript('./js/lightbox.js');
-        $.getScript('./js/timeline.js');
+        $.get('./timeline_extend.html', function(extend){
+          $('#timeline').append(extend);
+          $.getScript('./js/timeline.js');
       });
-      $.get('./timeline_extend.html', function(data){
-        $('#timeline').append(data);
       });
     }
   });
