@@ -91,14 +91,14 @@ $(function(){
   $( window ).on('scroll', function() {
     if(($('#timeline').offset().top-progress+50)<$(window).height() && flag==0){
       flag=1;
-      $.get('./_timeline.html', function(data){
+      $.get('./timeline.html', function(data){
         $('#timeline').append(data);
         $.getScript('./js/jquery.timeline.min.js');
         $.getScript('./js/jquery.mCustomScrollbar.js');
         $.getScript('./js/jquery.easing.1.3.js');
         $.getScript('./js/image.js');
         $.getScript('./js/lightbox.js');
-        $.get('./_timeline_extend.html', function(extend){
+        $.get('./timeline_extend.html', function(extend){
           $('#timeline').append(extend);
           $.getScript('./js/timeline.js');
         });
@@ -107,14 +107,14 @@ $(function(){
 
     if(($('#activity').offset().top-progress+50)<$(window).height() && flag==1){
       flag=2;
-      $.get('./_activities.html', function(data){
+      $.get('./activities.html', function(data){
         $('#activity').append(data);
       });
     }
   });
 });
 
-$.get('./_works.html', function(data){
+$.get('./works.html', function(data){
   $('#works .container').append(data);
   $(function(){
     $('figure.effect-zoe').hover(
