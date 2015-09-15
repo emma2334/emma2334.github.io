@@ -80,6 +80,12 @@ a:hover{
   text-decoration: none;
 }
 
+.loader{
+  width: 100%;
+  text-align: center;
+  padding: 150px 0;
+}
+
 
 /*---------------------------
   Preloader
