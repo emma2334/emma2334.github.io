@@ -131,10 +131,10 @@ a:hover{
 }
 
 #bg1{
-    background: url("../img/DSC00063.JPG");
-    background-size: cover;
-    background-position: center;
-    text-align: center;
+  background: url("../img/DSC00063.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
 
 
@@ -407,4 +407,30 @@ blockquote:after {
   color: #FFF;
   margin-top: 0px;
   margin-bottom: 20px;
+}
+
+
+/*---------------------------
+  Responsive
+---------------------------*/
+/*Medium devices Desktops (≥992px)*/
+@media (max-device-width: 1200px) {
+  #bg1{
+    background: url("../img/DSC00063_md.jpg") center;
+    background-size: cover;
+  }
+}
+/*Small devices Tablets (≥768px)*/
+@media (max-device-width: 992px) {
+  #bg1{
+    background: url("../img/DSC00063_sm.jpg") center;
+    background-size: cover;
+  }
+}
+/*Extra small devices Phones (<768px)*/
+@media (max-device-width: 768px) {
+  #bg1{
+    background: url("../img/DSC00063_xs.jpg") center;
+    background-size: cover;
+  }
 }

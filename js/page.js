@@ -1,7 +1,8 @@
 /*---------------------------
   Preload
  ---------------------------*/
-$.get('./img/DSC00063.JPG', function(data){
+var imgUrl = $('#bg1').css('background-image').replace('url(','').replace(')','');
+$.get(imgUrl, function(data){
   $('#preload').delay(2000).fadeOut(500, function(){
     $(".parallax_front").fadeIn();
     $(".parallax_base").fadeIn();
