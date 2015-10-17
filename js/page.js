@@ -93,16 +93,25 @@ $(function(){
   $( window ).on('scroll', function() {
     if(($('#timeline').offset().top-progress+50)<start_offset && flag==0){
       flag=1;
-      $.get('./timeline.html', function(data){
-        $('#timeline').append(data);
-        $.getScript('./js/jquery.timeline.min.js');
-        $.getScript('./js/jquery.mCustomScrollbar.js');
-        $.getScript('./js/jquery.easing.1.3.js');
-        $.getScript('./js/image.js');
-        $.getScript('./js/lightbox.js');
-        $.get('./timeline_extend.html', function(extend){
-          $('#timeline').append(extend);
-          $.getScript('./js/timeline.js');
+      $.getScript('./js/jquery.timeline.min.js');
+      $.getScript('./js/jquery.mCustomScrollbar.js');
+      $.getScript('./js/jquery.easing.1.3.js');
+      $.getScript('./js/image.js');
+      $.getScript('./js/lightbox.js');
+      $.getScript('./js/timeline.js');
+      $.get('./timeline_extend.html', function(extend){
+        $('#timeline').append(extend);
+        $('#timeline_extend').click(function(){
+          var a=$('#toggle').prop("checked");
+          $('#extension').animate({height: 'toggle'}, 'slow');
+
+          if(a==0){
+            $('#timeline_extend').find('span').html('hide all');
+            $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-up');
+          }else{
+            $('#timeline_extend').find('span').html('view all at once');
+            $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-down');
+          }
         });
       });
     }
