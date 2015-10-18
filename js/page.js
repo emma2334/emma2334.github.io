@@ -4,8 +4,8 @@
 var imgUrl = $('#bg1').css('background-image').replace(/url\(("|')?/, '').replace(/("|')?\)/,'');
 $.get(imgUrl, function(data){
   $('#preload').delay(2000).fadeOut(500, function(){
-    $(".parallax_front").fadeIn();
-    $(".parallax_base").fadeIn();
+    $('body').removeAttr('style');
+    $('.parallax_front').fadeIn();
   });
 }).fail(function(){
   var msg = $(document.createElement('div')).css('display', 'none').attr('id', 'preload_error').html('Something wrong.<br>Please refresh the page');
@@ -13,6 +13,11 @@ $.get(imgUrl, function(data){
   $("#preload_error").fadeIn(500);
 });
 
+// get data
+var data;
+$.get( "./data.json", function(json) {
+  data = json;
+});
 
 
 /*---------------------------
