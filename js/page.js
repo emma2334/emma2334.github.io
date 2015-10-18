@@ -5,7 +5,7 @@ var imgUrl = $('#bg1').css('background-image').replace(/url\(("|')?/, '').replac
 $.get(imgUrl, function(data){
   $('#preload').delay(2000).fadeOut(500, function(){
     $('body').removeAttr('style');
-    $('.parallax_front').fadeIn();
+    $('.parallax_front').fadeIn().css('top', 0);
   });
 }).fail(function(){
   var msg = $(document.createElement('div')).css('display', 'none').attr('id', 'preload_error').html('Something wrong.<br>Please refresh the page');
@@ -13,11 +13,46 @@ $.get(imgUrl, function(data){
   $("#preload_error").fadeIn(500);
 });
 
-// get data
-var data;
+
+
+
+/*---------------------------
+  Get and append data
+ ---------------------------*/
+var data, dataGet = true;
 $.get( "./data.json", function(json) {
   data = json;
+
+  // append skill table
+  var skill = data.skill;
+  for(i=0; i<skill.length; i++){
+    var e = $('<div class="col-md-5 col-sm-5">\
+                <h4 class="uppercase align-right">' + skill[i].title + '</h4>\
+                <hr><ul></ul></div>');
+    if(i%2==0) e.addClass('col-md-offset-1 col-sm-offset-1');
+    for(j=0; j<skill[i].content.length; j++){
+      e.find('ul').append('<li>' + skill[i].content[j][0] + '<span class="score" data-score="' + skill[i].content[j][1] + '" data-toggle="tooltip" data-placement="left" title="">  <span class="rank"></span></span></li>');
+    }
+    $('#skills').children('div').last().append(e);
+  }
+
+  $('[data-toggle="tooltip"]').tooltip();
+  for(var i=0; i<$('.score').length; i++){
+    score(i);
+  }
+
+  function score(i){
+    var e=['No idea', 'Learned', 'Average', 'Good', 'Over average', 'Excellent'];
+    var n=$('.score').eq(i), k=n.attr('data-score');
+    n.find('.rank').html(e[k]);
+    n.attr('data-original-title', e[k]);
+  }
+}).fail(function(){
+  dataGet = false;
+  $('#skills').hide();
 });
+
+
 
 
 /*---------------------------
@@ -38,7 +73,10 @@ $.get( "./data.json", function(json) {
     }
 
 
-    if(($('#quote').offset().top-progress)>0) $('.parallax_front').css('top', -progress*1.5);
+    if((progress*2.5)<=$(window).height())
+      $('.parallax_front').css('top', -progress*1.5);
+    else
+      $('.parallax_front').css('top', $(window).height()*(-1.5)/2.5);
 
     if(progress>0){
       $('#quote').removeClass("transparent");
@@ -54,26 +92,6 @@ $.get( "./data.json", function(json) {
   });
 
 })();
-
-
-
-
-/*---------------------------
-  Skill table
- ---------------------------*/
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-  for(var i=0; i<$('.score').length; i++){
-    score(i);
-  }
-
-  function score(i){
-    var e=['No idea', 'Learned', 'Average', 'Good', 'Over average', 'Excellent'];
-    var n=$('.score').eq(i), k=n.attr('data-score');
-    n.find('.rank').html(e[k]);
-    n.attr('data-original-title', e[k]);
-  }
-});
 
 
 
@@ -101,23 +119,21 @@ $(function(){
       $.getScript('./js/jquery.timeline.min.js');
       $.getScript('./js/jquery.mCustomScrollbar.js');
       $.getScript('./js/jquery.easing.1.3.js');
-      $.getScript('./js/image.js');
       $.getScript('./js/lightbox.js');
       $.getScript('./js/timeline.js');
+      $.getScript('./js/image.js');
       $.get('./timeline_extend.html', function(extend){
         $('#timeline').append(extend);
         $('#timeline_extend').click(function(){
           var a=$('#toggle').prop("checked");
           $('#extension').animate({height: 'toggle'}, 'slow');
-
-          if(a==0){
-            $('#timeline_extend').find('span').html('hide all');
-            $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-up');
-          }else{
-            $('#timeline_extend').find('span').html('view all at once');
-            $('#timeline_extend').find('i').attr('class', 'fa fa-chevron-down');
-          }
         });
+        if(dataGet == false){
+          $('.timelineLoader').remove();
+          $('.timelineFlat').remove();
+          $('#timeline_extend').remove();
+          $('#extension').show().find('.title').hide();
+        }
       });
     }
 

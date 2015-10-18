@@ -350,6 +350,24 @@ blockquote:after {
   text-transform: uppercase;
 }
 
+#timeline_extend span:before{
+  content: "view all at once"
+}
+
+input[type=checkbox]:checked ~ #timeline_extend span:before{
+  content: "hide all"
+}
+
+#timeline_extend i:before{
+  font: normal normal normal 14px/1 FontAwesome;
+  content: "\f078"
+}
+
+input[type=checkbox]:checked ~ #timeline_extend i:before{
+  font: normal normal normal 14px/1 FontAwesome;
+  content: "\f077";
+}
+
 #timeline_extend:hover{
   cursor: pointer;
 }
