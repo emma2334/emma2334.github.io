@@ -17,36 +17,92 @@ $.get(imgUrl, function(data){
 
 
 /*---------------------------
+  Get search query
+ ---------------------------*/
+var query = {};
+(function(){
+  var pair = window.location.search.substring(1).split("&");
+  for(i=0; i<pair.length; i++){
+    pair[i] = pair[i].split('=');
+    query[pair[i][0]] = pair[i][1];
+  }
+})();
+
+// get language
+switch(query.lang){
+  case 'en':
+    lang = query.lang;
+    break;
+  default:
+    lang = 'ch';
+}
+
+
+
+
+/*---------------------------
   Get and append data
  ---------------------------*/
 var data, dataGet = true;
 $.get( "./data.json", function(json) {
   data = json;
 
-  // append skill table
+  // about me
+  $('#about .info div').html(data.info[lang]);
+
+  // skill table
   var skill = data.skill;
   for(i=0; i<skill.length; i++){
+    var a=['No idea', 'Learned', 'Average', 'Good', 'Over average', 'Excellent'];
     var e = $('<div class="col-md-5 col-sm-5">\
                 <h4 class="uppercase align-right">' + skill[i].title + '</h4>\
                 <hr><ul></ul></div>');
     if(i%2==0) e.addClass('col-md-offset-1 col-sm-offset-1');
     for(j=0; j<skill[i].content.length; j++){
-      e.find('ul').append('<li>' + skill[i].content[j][0] + '<span class="score" data-score="' + skill[i].content[j][1] + '" data-toggle="tooltip" data-placement="left" title="">  <span class="rank"></span></span></li>');
+      var b = skill[i].content[j];
+      e.find('ul').append('<li>' + b[0] + '<span class="score" data-score="' + b[1] + '" data-toggle="tooltip" data-placement="left" title="' + a[b[1]] + '">  <span class="rank">' + a[b[1]] + '</span></span></li>');
     }
     $('#skills').children('div').last().append(e);
   }
 
-  $('[data-toggle="tooltip"]').tooltip();
-  for(var i=0; i<$('.score').length; i++){
-    score(i);
+  // works
+  for(i=0; i<Object.keys(data.work).length; i++){
+    var a = data.work[Object.keys(data.work)[i]];
+    $('<figure class="effect-zoe">\
+        <img src="' + a.img + '"/>\
+        <figcaption>\
+          <div class="mask"></div>\
+          <h2>' + a.title[lang] + '</h2>\
+          <p class="icon-links">\
+            <a title="URL" href="' + a.url.link + '" target="_blank"><i class="fa fa-external-link"></i></a>\
+            <a title="GitHub" href="' + a.url.github + '" target="_blank"><i class="fa fa-github"></i></a>\
+          </p>\
+          <p class="description">' + a.intro[lang] + '<br><br><a data-toggle="modal" data-target="#' + Object.keys(data.work)[i] + '">【 more 】</a></p>\
+        </figcaption>\
+      </figure>\
+      <div class="modal fade bs-example-modal-lg" id="' + Object.keys(data.work)[i] + '" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">\
+        <div class="modal-dialog modal-lg">\
+          <div class="modal-content">\
+            <div class="modal-header">\
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\
+              <h4 class="modal-title" id="myLargeModalLabel">' + a.more.title[lang] + '</h4>\
+              <a href="' + a.url.link + '" target="_blank"><i class="fa fa-external-link"></i></a>\
+            </div>\
+            <div class="modal-body">' + a.more.content[lang] + '</div>\
+          </div>\
+        </div>\
+      </div>').appendTo('#works .grid');
   }
 
-  function score(i){
-    var e=['No idea', 'Learned', 'Average', 'Good', 'Over average', 'Excellent'];
-    var n=$('.score').eq(i), k=n.attr('data-score');
-    n.find('.rank').html(e[k]);
-    n.attr('data-original-title', e[k]);
+  // more
+  for(i=0; i<data.more.length; i++){
+    $('<div class="col-md-3 col-sm-6" data-toggle="tooltip" data-placement="bottom" title="' + data.more[i].title + '">\
+          <i class="fa ' + data.more[i].icon + '"></i>\
+          <div class="substance">' + data.more[i].content[lang] + '</div>\
+        </div>').appendTo('#more .container');
   }
+
+  $('[data-toggle="tooltip"]').tooltip();
 }).fail(function(){
   dataGet = false;
   $('#skills').hide();
@@ -148,16 +204,7 @@ $(function(){
 });
 
 $.get('./works.html', function(data){
-  $('#works .container').append(data);
-  $(function(){
-    $('figure.effect-zoe').hover(
-      function(){
-        $(this).find('.mask').css('opacity', '0.3');
-      },
-      function(){
-        $(this).find('.mask').css('opacity', '');
-      });
-  });
+  // $('#works .container').append(data);
 });
 
 function imgLoader(target){

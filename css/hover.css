@@ -168,17 +168,6 @@ figure.effect-zoe{
 	background: transparent;
 }
 
-figure.effect-zoe .mask{
-	background-color: black;
-	height: 360px;
-	width: 100%;
-	position: absolute;
-	top: 0px;
-	opacity: 0;
-	-webkit-transition: 0.35s;
-	transition: 0.35s;
-}
-
 figure.effect-zoe figcaption {
 	top: auto;
 	bottom: 0;
@@ -272,10 +261,6 @@ figure.effect-zoe:hover p.icon-links a:nth-child(2) {
 figure.effect-zoe:hover p.icon-links a:first-child {
 	-webkit-transition-delay: 0.2s;
 	transition-delay: 0.2s;
-}
-
-#works .grid figure {
-	width: 48%;
 }
 
 figure.effect-zoe {

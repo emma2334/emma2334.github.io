@@ -327,7 +327,7 @@ blockquote:after {
   vertical-align: middle;
 }
 
-#more i{
+#more .fa{
   font-size: 3em;
   vertical-align: middle;
   display: table-cell;
@@ -407,6 +407,36 @@ input[type=checkbox]:checked ~ #timeline_extend i:before{
 
 .modal-title{
   font-weight: bold;
+}
+
+#works .grid figure {
+  width: 48%;
+}
+
+#works .grid figure .mask{
+  background-color: black;
+  height: 360px;
+  width: 100%;
+  position: absolute !important;
+  opacity: 0;
+  bottom: 100%;
+  left: 0px;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+}
+#works .grid figure:hover .mask{
+  opacity: 0.7;
+}
+
+#works .grid figure .description a{
+  color: #7FD2FF;
+}
+#works .grid figure .description a:hover{
+  color: #EDF9FF;
+}
+
+#works .grid figure h2{
+  word-spacing: initial;
 }
 
 /*---------------------------

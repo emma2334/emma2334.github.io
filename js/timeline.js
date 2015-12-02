@@ -10,16 +10,16 @@ $(function(){
             <img src="' + event[i].img_t + '" alt=""/>\
             </a>\
             <div class="post_date"></div>\
-            <span>' + event[i].period + '<br>' + event[i].info + '</span>\
+            <span>' + event[i].period + '<br>' + event[i].info[lang] + '</span>\
           </div>\
         </div>').appendTo('.timelineFlat');
-      if(event[i].text!=''){
+      if(event[i].text[lang]!=''){
         $('[data-description="' + event[i].title + '"][data-id="' + event[i].date + '"]').append('<div class="read_more" data-id="' + event[i].date + '">Read more</div>');
         $('<div class="item_open" data-id="' + event[i].date + '">\
             <div class="item_open_content">\
               <div class="timeline_open_content">\
                 <header>' + event[i].period + '</header>\
-                <span>' + event[i].text + '</span>\
+                <span>' + event[i].text[lang] + '</span>\
               </div>\
             </div>\
           </div>').appendTo($('[data-description="' + event[i].title + '"][data-id="' + event[i].date + '"]').parent('.event'));
