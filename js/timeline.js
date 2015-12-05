@@ -1,31 +1,4 @@
 $(function(){
-  // get all events
-  var event = data.timeline;
-
-    // append to html
-    for(i=0; i<event.length; i++){
-      $('<div class="event">\
-          <div class="item" data-id="' + event[i].date + '" data-description="' + event[i].title + '">\
-            <a class="image_rollover_bottom con_borderImage" data-description="ZOOM IN" href="' + event[i].img + '" rel="lightbox[timeline]">\
-            <img src="' + event[i].img_t + '" alt=""/>\
-            </a>\
-            <div class="post_date"></div>\
-            <span>' + event[i].period + '<br>' + event[i].info[lang] + '</span>\
-          </div>\
-        </div>').appendTo('.timelineFlat');
-      if(event[i].text[lang]!=''){
-        $('[data-description="' + event[i].title + '"][data-id="' + event[i].date + '"]').append('<div class="read_more" data-id="' + event[i].date + '">Read more</div>');
-        $('<div class="item_open" data-id="' + event[i].date + '">\
-            <div class="item_open_content">\
-              <div class="timeline_open_content">\
-                <header>' + event[i].period + '</header>\
-                <span>' + event[i].text[lang] + '</span>\
-              </div>\
-            </div>\
-          </div>').appendTo($('[data-description="' + event[i].title + '"][data-id="' + event[i].date + '"]').parent('.event'));
-      }
-    }
-
   // light
   $('.tl2').timeline({
     openTriggerClass : '.read_more',

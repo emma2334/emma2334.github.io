@@ -396,6 +396,14 @@ input[type=checkbox]:checked ~ #timeline_extend i:before{
 
 
 /*---------------------------
+  section#activiy
+---------------------------*/
+#activity figcaption p{
+  text-transform: initial;
+}
+
+
+/*---------------------------
   section#works
 ---------------------------*/
 .modal{

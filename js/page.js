@@ -15,7 +15,6 @@ $.get(imgUrl, function(data){
 
 
 
-
 /*---------------------------
   Get search query
  ---------------------------*/
@@ -36,7 +35,6 @@ switch(query.lang){
   default:
     lang = 'ch';
 }
-
 
 
 
@@ -65,11 +63,70 @@ $.get( "./data.json", function(json) {
     $('#skills').children('div').last().append(e);
   }
 
+  // more about me
+  for(i=0; i<data.more.length; i++){
+    $('<div class="col-md-3 col-sm-6" data-toggle="tooltip" data-placement="bottom" title="' + data.more[i].title + '">\
+          <i class="fa ' + data.more[i].icon + '"></i>\
+          <div class="substance">' + data.more[i].content[lang] + '</div>\
+        </div>').appendTo('#more .container');
+  }
+
+  // timeline
+  for(i=0; i<data.timeline.length; i++){
+    var a = data.timeline[i];
+    $('<div class="event">\
+        <div class="item" data-id="' + a.date + '" data-description="' + a.title + '">\
+          <a class="image_rollover_bottom con_borderImage" data-description="ZOOM IN" href="' + a.img + '" rel="lightbox[timeline]">\
+          <img class="lazy" data-original="' + a.img_t + '" alt="" width="410px" height="160px"/>\
+          </a>\
+          <div class="post_date"></div>\
+          <span>' + a.period + '<br>' + a.info[lang] + '</span>\
+        </div>\
+      </div>').appendTo('.timelineFlat');
+    if(a.text[lang]!=''){
+      $('[data-description="' + a.title + '"][data-id="' + a.date + '"]').append('<div class="read_more" data-id="' + a.date + '">Read more</div>');
+      $('<div class="item_open" data-id="' + a.date + '">\
+          <div class="item_open_content">\
+            <div class="timeline_open_content">\
+              <header>' + a.period + '</header>\
+              <span>' + a.text[lang] + '</span>\
+            </div>\
+          </div>\
+        </div>').appendTo($('[data-description="' + a.title + '"][data-id="' + a.date + '"]').parent('.event'));
+    }
+  }
+
+  // timeline extension
+  for(i=0; i<data.timeline_all.length; i++){
+    var a = data.timeline_all[i];
+    $('<figure class="effect-apollo">\
+        <img data-original="' + a.img + '"/>\
+        <figcaption>\
+          <h2>' + a.title + '</h2>\
+          <p>' + a.intro + '</p>\
+        </figcaption>\
+      </figure>').appendTo('#extension .grid');
+  }
+
+  // activities
+  for(i=0; i<data.activity.length; i++){
+    var a = data.activity[i];
+    if(a.title[lang]!=""){
+      $('<figure class="effect-apollo">\
+          <img data-original="' + a.img + '"/>\
+          <figcaption>\
+            <h2>' + a.title[lang] + '</h2>\
+            <p>' + a.info[lang] + '</p>\
+          </figcaption>\
+        </figure>').appendTo('#activity .grid');
+    }
+  }
+
   // works
   for(i=0; i<Object.keys(data.work).length; i++){
     var a = data.work[Object.keys(data.work)[i]];
     $('<figure class="effect-zoe">\
-        <img src="' + a.img + '"/>\
+        <img data-original="' + a.img + '"/>\
         <figcaption>\
           <div class="mask"></div>\
           <h2>' + a.title[lang] + '</h2>\
@@ -94,20 +151,20 @@ $.get( "./data.json", function(json) {
       </div>').appendTo('#works .grid');
   }
 
-  // more
-  for(i=0; i<data.more.length; i++){
-    $('<div class="col-md-3 col-sm-6" data-toggle="tooltip" data-placement="bottom" title="' + data.more[i].title + '">\
-          <i class="fa ' + data.more[i].icon + '"></i>\
-          <div class="substance">' + data.more[i].content[lang] + '</div>\
-        </div>').appendTo('#more .container');
-  }
-
   $('[data-toggle="tooltip"]').tooltip();
+
+  $("img.lazy").lazyload({
+      effect : "fadeIn"
+  });
+  $('.timelineFlat').click(function(){
+    setTimeout(function() {$(".timelineFlat img.lazy").lazyload();}, 500);
+  });
+
 }).fail(function(){
   dataGet = false;
   $('#skills').hide();
+  console.log('false');
 });
-
 
 
 
@@ -116,8 +173,7 @@ $.get( "./data.json", function(json) {
  ---------------------------*/
 (function(){
   $( window ).on('scroll', function() {
-    progress = parseFloat($(document).scrollTop());
-    var e = progress/$(window).height();
+    var e = scrollY/$(window).height();
 
     var a=$('#scroll-down-notice'), b=$('#slogan'), c=0.2-e;
     if(c>0){
@@ -129,17 +185,17 @@ $.get( "./data.json", function(json) {
     }
 
 
-    if((progress*2.5)<=$(window).height())
-      $('.parallax_front').css('top', -progress*1.5);
+    if((scrollY*2.5)<=$(window).height())
+      $('.parallax_front').css('top', -scrollY*1.5);
     else
       $('.parallax_front').css('top', $(window).height()*(-1.5)/2.5);
 
-    if(progress>0){
+    if(scrollY>0){
       $('#quote').removeClass("transparent");
       $('#about').removeClass("transparent");
     }
 
-    if(($('#skills').offset().top-progress)<$(window).height()/2.5){
+    if(($('#skills').offset().top-scrollY)<$(window).height()/2.5){
       for(var i=0; i<$('.score').length; i++){
         var level = $('.score').eq(i).attr('data-score');
         $('.score').eq(i).addClass('score-'+level);
@@ -168,9 +224,9 @@ function link_alert(){
  ---------------------------*/
 $(function(){
   var flag = 0;
-  var start_offset = $(window).height()*2;
+  var start_offset = $(window).height();
   $( window ).on('scroll', function() {
-    if(($('#timeline').offset().top-progress+50)<start_offset && flag==0){
+    if(($('#timeline').offset().top-scrollY)<$(window).height() && flag==0){
       flag=1;
       $.getScript('./js/jquery.timeline.min.js');
       $.getScript('./js/jquery.mCustomScrollbar.js');
@@ -178,39 +234,15 @@ $(function(){
       $.getScript('./js/lightbox.js');
       $.getScript('./js/timeline.js');
       $.getScript('./js/image.js');
-      $.get('./timeline_extend.html', function(extend){
-        $('#timeline').append(extend);
-        $('#timeline_extend').click(function(){
-          var a=$('#toggle').prop("checked");
-          $('#extension').animate({height: 'toggle'}, 'slow');
-        });
-        if(dataGet == false){
-          $('.timelineLoader').remove();
-          $('.timelineFlat').remove();
-          $('#timeline_extend').remove();
-          $('#extension').show().find('.title').hide();
-        }
-      });
-    }
-
-    if(($('#activity').offset().top-progress+50)<start_offset && flag==1){
-      flag=2;
-      $.get('./activities.html', function(data){
-        $('#activity').append(data);
-        imgLoader('#activity');
-      });
     }
   });
-});
-
-$.get('./works.html', function(data){
-  // $('#works .container').append(data);
 });
 
 function imgLoader(target){
   var total_images = $(target).find('img').length;
   var images_loaded = 0;
-  $(target).find('img').each(function() {
+  target.find('img').each(function() {
+    $(this).attr('src', $(this).attr('data-original')).removeAttr('data-original');
       var fakeSrc = $(this).attr('src');
       $("<img/>").attr("src", fakeSrc).load(function() {
           images_loaded++;
@@ -221,3 +253,24 @@ function imgLoader(target){
       });
   });
 }
+
+
+
+/*---------------------------
+  Events
+ ---------------------------*/
+ $('#timeline_extend').click(function(){
+    imgLoader($('#extension'));
+    var a=$('#toggle').prop("checked");
+    $('#extension').animate({height: 'toggle'}, 'slow');
+ });
+
+ $(window).on('scroll', function(){
+  var target = $('section .container').has('.loader');
+  var e = '#extension';
+  target.not(target.has(e)).each(function(){
+    if(($(this).offset().top-scrollY)<$(window).height()){
+      imgLoader($(this));
+    }
+  });
+ });

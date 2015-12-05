@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="http://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="./js/jquery.lazyload.min.js"></script>
 
   <link rel="stylesheet" href="./css/page.css">
   <link rel="stylesheet" href="./css/hover.css">
@@ -44,18 +45,7 @@
           <h4>There is an "Emma" in a dilemma.</h4>
         </header>
         <div class="info">
-          <div class="col-md-8 col-sm-7">
-            <p>
-              Hi, there, I'm Emma.<br>
-              被說是標準天平座的小孩乙枚，超級不會做決定，內心中滿著 dilemma，難怪我叫 Emma。
-            </p>
-            <p>
-              目前在學校圖書館打工，進行維護機構典藏網頁的維護工作，雖然我主要是負責前端的東西，不過還是要說一下 JSP 真的很讓人崩潰。平時不是在上課就是在打工，晚上就去當志工，幫國中、國小生課輔。
-            </p>
-            <p>
-              喜歡多方嘗試，挑戰自己無限可能。對於未來還是很迷茫，正在努力奔跑，找尋自己的方向。
-            </p>
-          </div>
+          <div class="col-md-8 col-sm-7"></div>
             <figure class="col-md-4 col-sm-5 author-pic">
               <img src="./img/061_n.png" alt="author-pic" class="img-responsive">
             </figure>
@@ -91,9 +81,28 @@
         <div class="timelineFlat timelineFlatBlog tl2">
         </div>
         <!-- /END TIMELINE -->
+        <div class="container">
+          <div id="extension">
+            <div class="title"><h2>View All</h2></div>
+            <div class="grid" style="display: none;"></div>
+            <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
+          </div>
+        </div>
+        <input type="checkbox" class="toogle-hide" id="toggle">
+        <label id="timeline_extend" for="toggle">
+          <span></span><br><i></i>
+        </label>
     </section>
 
     <section class="section" id="activity">
+      <div class="container">
+        <header class="title">
+          <h2>Activities<span>/</span></h2>
+          <h4>What I participated in.</h4>
+        </header>
+        <div class="grid" style="display: none;"></div>
+        <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
+      </div>
     </section>
 
     <section class="section" id="works">
@@ -102,7 +111,8 @@
           <h2>Works<span>/</span></h2>
           <h4>What I am doing and done.</h4>
         </header>
-        <div class="grid"></div>
+        <div class="grid" style="display: none;"></div>
+        <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
       </div>
     </section>
 
