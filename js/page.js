@@ -51,7 +51,7 @@ $.get( "./data.json", function(json) {
   // skill table
   var skill = data.skill;
   for(i=0; i<skill.length; i++){
-    var a=['No idea', 'Learned', 'Average', 'Good', 'Over average', 'Excellent'];
+    var a=['No idea', 'Learned', 'Average', 'Good', 'Above average', 'Excellent'];
     var e = $('<div class="col-md-5 col-sm-5">\
                 <h4 class="uppercase align-right">' + skill[i].title + '</h4>\
                 <hr><ul></ul></div>');
