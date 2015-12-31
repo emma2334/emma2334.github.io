@@ -10,6 +10,7 @@
   <link href="//fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="./js/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="./data.json"></script>
 
   <link rel="stylesheet" href="./css/page.css">
   <link rel="stylesheet" href="./css/hover.css">
@@ -59,7 +60,11 @@
           <h4>There is an "Emma" in a dilemma.</h4>
         </header>
         <div class="info">
-          <div class="col-md-8 col-sm-7"></div>
+          <div class="col-md-8 col-sm-7">
+            <script id="info_template" type="x-tmpl-mustache">
+              {{{ info[lang] }}}
+            </script>
+          </div>
             <figure class="col-md-4 col-sm-5 author-pic">
               <img src="./img/061_n.png" alt="author-pic" class="img-responsive">
             </figure>
@@ -70,6 +75,24 @@
         <div id="skills">
           <div class="title"><h2>Skills</h2></div>
             <div>
+              <script id="skills_template" type="x-tmpl-mustache">
+                {{ #skill }}
+                  <div class="col-md-5 col-sm-5">
+                    <h4 class="uppercase align-right">{{ title }}</h4>
+                    <hr>
+                    <ul>
+                      {{ #content }}
+                        <li>
+                          {{ 0 }}
+                          <span class="score" data-score="{{ 1 }}" data-toggle="tooltip" data-placement="left" title="">
+                            <span class="rank"></span>
+                          </span>
+                        </li>
+                      {{ /content }}
+                    </ul>
+                  </div>
+                {{ /skill }}
+              </script>
             </div>
         </div>
       </div>
@@ -78,6 +101,14 @@
     <section class="section" id="more">
       <div class="container">
         <div class="title"><h2>More About Me</h2></div>
+        <script id="more_template" type="x-tmpl-mustache">
+          {{ #more }}
+            <div class="col-md-3 col-sm-6" data-toggle="tooltip" data-placement="bottom" title="{{ title }}">
+              <i class="fa {{ icon }}"></i>
+              <div class="substance">{{{ content[lang] }}}</div>
+            </div>
+          {{ /more }}
+        </script>
       </div>
     </section>
 
@@ -93,12 +124,50 @@
         </div>
         <!-- BEGIN TIMELINE -->
         <div class="timelineFlat timelineFlatBlog tl2">
+          <script id="timeline_template" type="x-tmpl-mustache">
+            {{ #timeline }}
+            <div class="event">
+              <div class="item" data-id="{{ date }}" data-description="{{ title }}">
+                <a class="image_rollover_bottom con_borderImage" data-description="ZOOM IN" href="{{ img }}" rel="lightbox[timeline]">
+                <img class="lazy" data-original="{{ img_t }}" alt="" width="410px" height="160px"/>
+                </a>
+                <div class="post_date"></div>
+                <span>{{ period }}<br>{{{ info[lang] }}}</span>
+                {{ #text[lang] }}
+                  <div class="read_more" data-id="{{ date }}">Read more</div>
+                {{ /text[lang] }}
+              </div>
+                {{ #text[lang] }}
+                  <div class="item_open" data-id="{{ date }}">
+                    <div class="item_open_content">
+                      <div class="timeline_open_content">
+                        <header>{{ period }}</header>
+                        <span>{{{ text[lang] }}}</span>
+                      </div>
+                    </div>
+                  </div>
+                {{ /text[lang] }}
+            </div>
+            {{ /timeline }}
+          </script>
         </div>
         <!-- /END TIMELINE -->
         <div class="container">
           <div id="extension">
             <div class="title"><h2>View All</h2></div>
-            <div class="grid" style="display: none;"></div>
+            <div class="grid" style="display: none;">
+              <script id="activity_template" type="x-tmpl-mustache">
+                {{ #timeline_all }}
+                  <figure class="effect-apollo">
+                    <img data-original="{{ img }}"/>
+                    <figcaption>
+                      <h2>{{ title }}</h2>
+                      <p>{{ intro }}</p>
+                    </figcaption>
+                  </figure>
+                {{ /timeline_all }}
+              </script>
+            </div>
             <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
           </div>
         </div>
@@ -114,7 +183,21 @@
           <h2>Activities<span>/</span></h2>
           <h4>What I participated in.</h4>
         </header>
-        <div class="grid" style="display: none;"></div>
+        <div class="grid" style="display: none;">
+          <script id="activity_template" type="x-tmpl-mustache">
+            {{ #activity }}
+              {{ #info[lang] }}
+                <figure class="effect-apollo">
+                  <img data-original="{{ img }}"/>
+                  <figcaption>
+                    <h2>{{ title[lang] }}</h2>
+                    <p>{{{ info[lang] }}}</p>
+                  </figcaption>
+                </figure>
+              {{ /info[lang] }}
+            {{ /activity }}
+          </script>
+        </div>
         <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
       </div>
     </section>
@@ -125,7 +208,36 @@
           <h2>Works<span>/</span></h2>
           <h4>What I am doing and done.</h4>
         </header>
-        <div class="grid" style="display: none;"></div>
+        <div class="grid" style="display: none;">
+        <script id="works_template" type="x-tmpl-mustache">
+          {{ #work }}
+            <figure class="effect-zoe">
+              <img data-original="{{ img }}"/>
+              <figcaption>
+                <div class="mask"></div>
+                <h2>{{ title[lang] }}</h2>
+                <p class="icon-links">
+                  <a title="URL" href="{{ url.link }}" target="_blank"><i class="fa fa-external-link"></i></a>
+                  <a title="GitHub" href="{{ url.github }}" target="_blank"><i class="fa fa-github"></i></a>
+                </p>
+                <p class="description">{{{ intro[lang] }}}<br><br><a data-toggle="modal" data-target="#{{ id }}">【 more 】</a></p>
+              </figcaption>
+            </figure>
+            <div class="modal fade bs-example-modal-lg" id="{{ id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myLargeModalLabel">{{ more.title[lang] }}</h4>
+                    <a href="{{ url.link }}" target="_blank"><i class="fa fa-external-link"></i></a>
+                  </div>
+                  <div class="modal-body">{{{ more.content[lang] }}}</div>
+                </div>
+              </div>
+            </div>
+          {{ /work }}
+        </script>
+        </div>
         <div class="loader"><img src="./img/loadingAnimation.gif" /></div>
       </div>
     </section>
@@ -148,7 +260,7 @@
     <div class="full-page" id="bg1"></div>
   </div>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="./js/page.js"></script>
 

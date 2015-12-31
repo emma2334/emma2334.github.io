@@ -1,4 +1,4 @@
-{
+data = {
   "info": {
     "ch": "<p>Hi, there, I'm Emma.<br>被說是標準天平座的小孩乙枚，超級不會做決定，內心中滿著 dilemma，難怪我叫 Emma。</p><p>目前在學校圖書館打工，進行維護機構典藏網頁的維護工作，雖然我主要是負責前端的東西，不過還是要說一下 JSP 真的很讓人崩潰。平時不是在上課就是在打工，晚上就去當志工，幫國中、國小生課輔。</p><p>喜歡多方嘗試，挑戰自己無限可能。對於未來還是很迷茫，正在努力奔跑，找尋自己的方向。</p>",
     "en": "<p>Hi, there, I'm Emma.<br>Someone told me that I am a standard Libra girl, who often have difficulties on making decisions. It might explain why I'm Emma, because I'm always in a dilemma. :-P</p><p>I have a part-time job at school library for institutional repository system maintaining. In addition, I'm doing an internship at Sharelike. There's still lots more to learn!</p><p>“Seize every opportunity to develop any kind of possibilities” is my motto. Even though I'm still on the stage of fumbling toward the future, I seize every chance to make myself better.</p>"
@@ -112,7 +112,7 @@
       "info": { "ch": "as 議程助理",
                 "en": "as <b>Session Assistant</b>" },
       "text": {
-        "ch": "覺得我超白癡呀根本，申請了場務組工人，也被選上了，結果忘記填確認單於是失去工人身份了!!!!!! QAQ<br><br>感謝蛇蛇找我當議程助理，我這次才有機會出現在 PHPConf！雖然已經有一次議程助理經驗了，可是還是會緊張吶，雖然這次的工作比較簡單，只要舉時間牌和幫主持人注意其他事情就好。我的主持人趴尼是蛇蛇，整個打扮的超美!!!! /兩廳的主持人都盛裝打扮吶！能當蛇蛇的趴尼覺得很榮幸，覺得她超厲害的！♥",
+        "ch": "覺得我超白癡呀根本，申請了場務組工人，也被選上了，結果忘記填確認單於是失去工人身份了!!!!!! QAQ<br><br>感謝蛇蛇找我當議程助理，我這次才有機會出現在 PHPConf！雖然已經有一次議程助理經驗了，可是還是會緊張吶，雖然這次的工作比較簡單，只要舉時間牌和幫主持人注意其他事情就好。我的主持人趴尼是蛇蛇，整個打扮的超美!!!! 兩廳的主持人都盛裝打扮吶！能當蛇蛇的趴尼覺得很榮幸，覺得她超厲害的！♥",
         "en": ""} },
     { "title": "SITCON 2015",
       "date": "07/03/2015",
@@ -199,7 +199,12 @@
       "info": { "ch": "as 場務餐飲組組長",
                 "en": "as <b>Minister of catering unit, field control group</b>" },
       "text": {
-        "ch": "第一次接小組長的工作，覺得餐飲組組長真的不是人做的，從事前規劃、連絡廠商到活動當天，每天都是心力交瘁，看來我還太弱了。雖然本來就知道餐飲組長很辛苦，可是我不知道辛苦成這樣呀嗚嗚嗚。本來很佩服小平，經過這次之後是超級佩服小平吶！<( _  _ )><br><br>曬個午餐，覺得超好吃！而且米時負責幫我處理這個的哥哥人超好的呀嗚嗚嗚，總覺得一直在麻煩人家。萬分感謝！<br><br><a class=\"image_rollover_bottom con_borderImage\" data-description=\"ZOOM IN\" href=\"./img/timeline/content/php_food.jpg\" rel=\"lightbox[]\" style=\"width: 200px;\"><img src=\"./img/timeline/content/php_food_t.jpg\"/></a><br>其實覺得蠻幸運的，接洽的廠商都蠻不錯，早餐店的阿姨超親切，午餐的哥哥人超 nice！下午茶的業務雖然覺得跟她有點代溝，不過依活動當天餐點看來，她幫我們安排得不錯，還蠻感謝她的，然後下午茶送貨員也各個專業，餐點也幫我們佈得很好，果然術業有專攻。雖然很累，不過也是一次很棒的經驗，學到很多東西！",
+        "ch": "第一次接小組長的工作，覺得餐飲組組長真的不是人做的，從事前規劃、連絡廠商到活動當天，每天都是心力交瘁，看來我還太弱了。雖然本來就知道餐飲組長很辛苦，可是我不知道辛苦成這樣呀嗚嗚嗚。本來很佩服小平，經過這次之後是超級佩服小平吶！<( _  _ )><br><br>\
+                曬個午餐，覺得超好吃！而且米時負責幫我處理這個的哥哥人超好的呀嗚嗚嗚，總覺得一直在麻煩人家。萬分感謝！<br><br>\
+                <a class=\"image_rollover_bottom con_borderImage\" data-description=\"ZOOM IN\" href=\"./img/timeline/content/php_food.jpg\" rel=\"lightbox[]\" style=\"width: 200px;\">\
+                  <img src=\"./img/timeline/content/php_food_t.jpg\"/>\
+                </a><br>\
+                其實覺得蠻幸運的，接洽的廠商都蠻不錯，早餐店的阿姨超親切，午餐的哥哥人超 nice！下午茶的業務雖然覺得跟她有點代溝，不過依活動當天餐點看來，她幫我們安排得不錯，還蠻感謝她的，然後下午茶送貨員也各個專業，餐點也幫我們佈得很好，果然術業有專攻。雖然很累，不過也是一次很棒的經驗，學到很多東西！",
         "en": ""
       } },
     { "title": "Hour of Code 2015",
@@ -210,7 +215,7 @@
       "info": { "ch": "SITCON Hour of Code 桃園元智場<br>as 助教",
                 "en": "SITCON Hour of Code at YZU<br>as <b>Staff</b>" },
       "text": {
-        "ch": "第一次接小組長的工作，覺得餐飲組組長真的不是人做的，從事前規劃、連絡廠商到活動當天，每天都是心力交瘁，看來我還太弱了。雖然本來就知道餐飲組長很辛苦，可是我不知道辛苦成這樣呀嗚嗚嗚。本來很佩服小平，經過這次之後是超級佩服小平吶！<( _  _ )><br><br>曬個午餐，覺得超好吃！而且米時負責幫我處理這個的哥哥人超好的呀嗚嗚嗚，總覺得一直在麻煩人家。萬分感謝！<br><br><a class=\"image_rollover_bottom con_borderImage\" data-description=\"ZOOM IN\" href=\"./img/timeline/content/php_food.jpg\" rel=\"lightbox[]\" style=\"width: 200px;\"><img src=\"./img/timeline/content/php_food_t.jpg\"/></a><br>其實覺得蠻幸運的，接洽的廠商都蠻不錯，早餐店的阿姨超親切，午餐的哥哥人超 nice！下午茶的業務雖然覺得跟她有點代溝，不過依活動當天餐點看來，她幫我們安排得不錯，還蠻感謝她的，然後下午茶送貨員也各個專業，餐點也幫我們佈得很好，果然術業有專攻。雖然很累，不過也是一次很棒的經驗，學到很多東西！",
+        "ch": "",
         "en": ""
       } },
     { "title": "Hour of Code 2015",
@@ -221,7 +226,7 @@
       "info": { "ch": "SITCON Hour of Code 臺北大同場<br>as 助教",
                 "en": "SITCON Hour of Code at TTU<br>as <b>Staff</b>" },
       "text": {
-        "ch": "第一次接小組長的工作，覺得餐飲組組長真的不是人做的，從事前規劃、連絡廠商到活動當天，每天都是心力交瘁，看來我還太弱了。雖然本來就知道餐飲組長很辛苦，可是我不知道辛苦成這樣呀嗚嗚嗚。本來很佩服小平，經過這次之後是超級佩服小平吶！<( _  _ )><br><br>曬個午餐，覺得超好吃！而且米時負責幫我處理這個的哥哥人超好的呀嗚嗚嗚，總覺得一直在麻煩人家。萬分感謝！<br><br><a class=\"image_rollover_bottom con_borderImage\" data-description=\"ZOOM IN\" href=\"./img/timeline/content/php_food.jpg\" rel=\"lightbox[]\" style=\"width: 200px;\"><img src=\"./img/timeline/content/php_food_t.jpg\"/></a><br>其實覺得蠻幸運的，接洽的廠商都蠻不錯，早餐店的阿姨超親切，午餐的哥哥人超 nice！下午茶的業務雖然覺得跟她有點代溝，不過依活動當天餐點看來，她幫我們安排得不錯，還蠻感謝她的，然後下午茶送貨員也各個專業，餐點也幫我們佈得很好，果然術業有專攻。雖然很累，不過也是一次很棒的經驗，學到很多東西！",
+        "ch": "",
         "en": ""
       } }
   ],
@@ -303,8 +308,9 @@
                  "en": "" },
       "img": "./img/activity/10.jpg" }
   ],
-  "work": {
-    "dspace": {
+  "work": [
+    {
+      "id": "dspace",
       "title": { "ch": "中興大學機構典藏",
                  "en": "NCHU IR" },
       "img": "./img/works/dspace.jpg",
@@ -316,12 +322,39 @@
         "title": { "ch":"中興大學機構典藏",
                    "en": "NCHU Institutional Repository System" },
         "content": {
-          "ch": "<p>一個由 JSP 構成的系統，由於舊的典藏系統過於老舊，於是將原本的系統換成 Dspace Cris 4.2。<br>主要由工讀生三名（<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a>、<a href=\"https://github.com/kjes89011\" target=\"_blank\">kjes89011</a>）和其主管負責維護。<br><br></p><img class=\"lazy img-responsive\" data-original=\"./img/works/content/dspace.png\" class=\"img-responsive\"><br><br><p>剛開始換系統時，台灣普遍學校都還是使用臺大版本的 Dspace，因此我們是從翻譯語言檔到部署環境都是自己來，當然環境不是我部署的(掩面)。我們緩慢地將這個網頁慢慢地改成我們要的樣子，其中最困難的點大概是能參考的文獻很少，多數遇到困難時都要自己踹，常常踹到網頁跑不出來，然後再用備份檔復原。<br><br>最後還是小小抱怨一下，JSP 真的超級麻煩的QAQ。<br><br>-<br><br>最近我們升級到 5.3 了！我們也加入了新夥伴 dnychennnn 和 jd615645！<br><br><i>-- last update: Dec 12, 2015</i><br><br></p><p>【 Source Code 】<br><ul><li>原始 Dspace Cris：<a href=\"https://github.com/Cineca/DSpace\" target=\"_blank\">https://github.com/Cineca/DSpace</a><br></li><li>NCHU Dspace：<a href=\"https://github.com/NCHUIR/DSpace\" target=\"_blank\">https://github.com/NCHUIR/DSpace</a></li></ul></p>",
-          "en": "<p>It's a institutional repository system based on JSP. Due to system version is too old, we upgrade to Dspace ver.4.2.<br>It's mainly maintained by three part-time (<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a>、<a href=\"https://github.com/kjes89011\" target=\"_blank\">kjes89011</a>) and their manager。<br><br></p><img class=\"lazy img-responsive\" data-original=\"./img/works/content/dspace.png\" class=\"img-responsive\"><br><br><p>At the beginning, most institutional repository units in Taiwan are using Dspace RC5 (developed by NTU). There's no any Chinese language pack of Dspace Cris on the internet. Therefore, from translating to deploy, we have to do all on our own. The biggest difficulty may be too less document that we can refer to.<br><br>-<br><br>We upgraded to ver. 5.3.0 recently! We also have new partner dnychennnn and jd615645!<br><br><i>-- last update: Dec 12, 2015</i><br><br></p><p>【 Source Code 】<br><ul><li>Original Dspace Cris：<a href=\"https://github.com/Cineca/DSpace\" target=\"_blank\">https://github.com/Cineca/DSpace</a><br></li><li>NCHU Dspace：<a href=\"https://github.com/NCHUIR/DSpace\" target=\"_blank\">https://github.com/NCHUIR/DSpace</a></li></ul></p>"
+          "ch": "<p>一個由 JSP 構成的系統，由於舊的典藏系統過於老舊，於是將原本的系統換成 Dspace Cris 4.2。<br>主要由工讀生三名（<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a>、<a href=\"https://github.com/kjes89011\" target=\"_blank\">kjes89011</a>）和其主管負責維護。<br><br></p>\
+                  <img class=\"lazy img-responsive\" data-original=\"./img/works/content/dspace.png\" class=\"img-responsive\"><br><br><p>剛開始換系統時，台灣普遍學校都還是使用臺大版本的 Dspace，因此我們是從翻譯語言檔到部署環境都是自己來，當然環境不是我部署的(掩面)。我們緩慢地將這個網頁慢慢地改成我們要的樣子，其中最困難的點大概是能參考的文獻很少，多數遇到困難時都要自己踹，常常踹到網頁跑不出來，然後再用備份檔復原。<br><br>\
+                  <p>\
+                    最後還是小小抱怨一下，JSP 真的超級麻煩的QAQ。<br><br>\
+                    -<br><br>\
+                    最近我們升級到 5.3 了！我們也加入了新夥伴 dnychennnn 和 jd615645！<br><br>\
+                    <i>-- last update: Dec 12, 2015</i><br><br>\
+                  </p>\
+                  <p>【 Source Code 】<br>\
+                    <ul>\
+                      <li>原始 Dspace Cris：<a href=\"https://github.com/Cineca/DSpace\" target=\"_blank\">https://github.com/Cineca/DSpace</a></li>\
+                      <li>NCHU Dspace：<a href=\"https://github.com/NCHUIR/DSpace\" target=\"_blank\">https://github.com/NCHUIR/DSpace</a></li>\
+                    </ul>\
+                  </p>",
+          "en": "<p>It's a institutional repository system based on JSP. Due to system version is too old, we upgrade to Dspace ver.4.2.<br>It's mainly maintained by three part-time (<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a>、<a href=\"https://github.com/kjes89011\" target=\"_blank\">kjes89011</a>) and their manager。<br><br></p>\
+                  <img class=\"lazy img-responsive\" data-original=\"./img/works/content/dspace.png\" class=\"img-responsive\"><br><br>\
+                  <p>\
+                    At the beginning, most institutional repository units in Taiwan are using Dspace RC5 (developed by NTU). There's no any Chinese language pack of Dspace Cris on the internet. Therefore, from translating to deploy, we have to do all on our own. The biggest difficulty may be too less document that we can refer to.<br><br>\
+                    -<br><br>\
+                    We upgraded to ver. 5.3.0 recently! We also have new partner dnychennnn and jd615645!<br><br>\
+                    <i>-- last update: Dec 12, 2015</i><br><br>\
+                  </p>\
+                  <p>【 Source Code 】<br>\
+                    <ul>\
+                      <li>Original Dspace Cris：<a href=\"https://github.com/Cineca/DSpace\" target=\"_blank\">https://github.com/Cineca/DSpace</a></li>\
+                      <li>NCHU Dspace：<a href=\"https://github.com/NCHUIR/DSpace\" target=\"_blank\">https://github.com/NCHUIR/DSpace</a></li>\
+                    </ul>\
+                  </p>"
         }
       }
     },
-    "pia": {
+    {
+      "id": "pia",
       "title": { "ch": "個資稽核系統",
                  "en": "PIA System" },
       "img": "./img/works/pia.jpg",
@@ -333,10 +366,18 @@
         "title": { "ch": "個資稽核系統",
                    "en": "Personal Infomation Audition System" },
         "content": {
-              "ch": "<p>系上大三專題的產物。由於之後是給學校計算機中心的人員維護，因此用他們比較常用的語言（JSP）。為了切成 MVC 架構花了我們兩三個月的時間，最後組長大大一個不爽，花了一天的時間用 PHP 寫到當時的進度。接著我們就開始超英趕美，整個開發進度up！<br></p><img class=\"lazy img-responsive\" data-original=\"./img/works/content/pia.png\" class=\"img-responsive\"><br><p>由於伺服器被關閉了，所以也沒辦法做更多介紹XD。<br><br></p><p>【組員】<br><a href=\"https://github.com/abcd4913\" target=\"_blank\">abcd4913</a>、<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a></p>",
-              "en": "<p>It's our departmental research project product. At first, advisor hoped to write with JSP, because staff of Computer And Information Network Center (CINC) are more familiar to it. Though none of us is good at it. We spent large amount of time on learning JSP. One day, one of my partner can't stands we spent too much time but too less outcome. He spent a day writting what we done in last two months. After it, our developing rate rose perpendicularly.<br></p><img class=\"lazy img-responsive\" data-original=\"./img/works/content/pia.png\" class=\"img-responsive\"><br><p>Server is off now.<br><br></p><p>【Team members】<br><a href=\"https://github.com/abcd4913\" target=\"_blank\">abcd4913</a>、<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a></p>" }}
+              "ch": "<p>系上大三專題的產物。由於之後是給學校計算機中心的人員維護，因此用他們比較常用的語言（JSP）。為了切成 MVC 架構花了我們兩三個月的時間，最後組長大大一個不爽，花了一天的時間用 PHP 寫到當時的進度。接著我們就開始超英趕美，整個開發進度up！<br><br></p>\
+                      <img class=\"lazy img-responsive\" data-original=\"./img/works/content/pia.png\" class=\"img-responsive\"><br><br>\
+                      <p>由於伺服器被關閉了，所以也沒辦法做更多介紹XD。<br><br></p>\
+                      <p>【組員】<br>\
+                      <a href=\"https://github.com/abcd4913\" target=\"_blank\">abcd4913</a>、<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a></p>",
+              "en": "<p>It's our departmental research project product. At first, advisor hoped to write with JSP, because staff of Computer And Information Network Center (CINC) are more familiar to it. Though none of us is good at it. We spent large amount of time on learning JSP. One day, one of my partner can't stands we spent too much time but too less outcome. He spent a day writting what we done in last two months. After it, our developing rate rose perpendicularly.<br><br></p>\
+                      <img class=\"lazy img-responsive\" data-original=\"./img/works/content/pia.png\" class=\"img-responsive\"><br><br>\
+                      <p>Server is off now.<br><br></p>\
+                      <p>【Team members】<br><a href=\"https://github.com/abcd4913\" target=\"_blank\">abcd4913</a>、<a href=\"https://github.com/chgu82837\" target=\"_blank\">chgu82837</a>、<a href=\"https://github.com/emma2334\" target=\"_blank\">emma2334</a></p>" }}
     },
-    "dm5viewer": {
+    {
+      "id": "dm5viewer",
       "title": { "ch": "動漫屋閱讀輔助器",
                  "en": "DM5 Viewer" },
       "img": "./img/works/dm5viewer.jpg",
@@ -348,10 +389,46 @@
         "title": { "ch": "DM5 Viewer 動漫屋閱讀輔助器",
                    "en": "DM5 Viewer" },
         "content": {
-          "ch": "<p>這是一個 <a href=\"http://www.dm5.com/\" target=\"_blank\">DM5 動漫屋</a>專用的使用者腳本。能一次展開漫畫該章全部頁數，並在閱讀完畢後自動換到下一章。</p><br><img class=\"lazy img-responsive\" data-original=\"./img/works/content/dm5viewer.png\" class=\"img-responsive\"><br><p>安裝前請先確認瀏覽器有使用者腳本管理套件<br><a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\" alt=\"Install\"><img class=\"lazy img-responsive\" data-original=\"./img/works/content/install.png\" alt=\"Install\"></a>  </p><h4>功能</h4><ul><li>一次展開全部頁數</li><li>背景色切換（灰黑／白）</li><li>自適應寬度</li><li>自動滾動</li><li>自動換章</li><li>顯示當下讀到的頁碼</li><li>紀錄上次閱讀的章節與頁數</li><li>透過空白鍵控制自動滾動功能</li></ul><h4>安裝方法</h4><p>請先安裝 <a href=\"http://tampermonkey.net/\" target=\"_blank\">Tampermonkey</a>（Safari、Chrome）或 <a href=\"https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/\" target=\"_blank\">GreaseMonkey</a>（Firefox）後點擊<a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\">這裡</a>。</p>",
-          "en": "<p>This is a userscript for reading comics at <a href=\"http://www.dm5.com/\" target=\"_blank\">DM5</a>. It can show all pages of a comic chapter at once and turn to next chapter automatically when finish reading.</p><br><img class=\"lazy img-responsive\" data-original=\"./img/works/content/dm5viewer.png\" class=\"img-responsive\"><br><p>Please make sure there is a userscript manager in your browser before installing it.<br><a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\" alt=\"Install\"><img class=\"lazy img-responsive\" data-original=\"./img/works/content/install.png\" alt=\"Install\"></a>  </p><h4><a id=\"user-content-feature\" class=\"anchor\" href=\"#feature\" aria-hidden=\"true\"><span class=\"octicon octicon-link\"></span></a>Feature</h4><ul><li>Show all pages at once</li><li>Change background color (carbon black / whie)</li><li>Automatic width adaptability</li><li>Automatically scrolling</li><li>Turn to next chapter automatically</li><li>Show current page number</li><li>Record where you left off</li><li>Enable automatically scrolling via spacebar</li></ul><h4>Installation</h4><p>Please install <a href=\"http://tampermonkey.net/\" target=\"_blank\">Tampermonkey</a> (Safari、Chrome) or <a href=\"https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/\" target=\"_blank\">GreaseMonkey</a> (Firefox) first, and then click <a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\">here</a>.</p>"
+          "ch": "<p>這是一個 <a href=\"http://www.dm5.com/\" target=\"_blank\">DM5 動漫屋</a>專用的使用者腳本。能一次展開漫畫該章全部頁數，並在閱讀完畢後自動換到下一章。<br><br></p>\
+                  <img class=\"lazy img-responsive\" data-original=\"./img/works/content/dm5viewer.png\" class=\"img-responsive\"><br><br>\
+                  <p>\
+                    安裝前請先確認瀏覽器有使用者腳本管理套件<br>\
+                    <a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\" alt=\"Install\"><img class=\"lazy img-responsive\" data-original=\"./img/works/content/install.png\" alt=\"Install\"></a>\
+                  </p>\
+                  <h4>功能</h4>\
+                  <ul>\
+                    <li>一次展開全部頁數</li>\
+                    <li>背景色切換（灰黑／白）</li>\
+                    <li>自適應寬度</li>\
+                    <li>自動滾動</li>\
+                    <li>自動換章</li>\
+                    <li>顯示當下讀到的頁碼</li>\
+                    <li>紀錄上次閱讀的章節與頁數</li>\
+                    <li>透過空白鍵控制自動滾動功能</li>\
+                  </ul>\
+                  <h4>安裝方法</h4>\
+                  <p>請先安裝 <a href=\"http://tampermonkey.net/\" target=\"_blank\">Tampermonkey</a>（Safari、Chrome）或 <a href=\"https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/\" target=\"_blank\">GreaseMonkey</a>（Firefox）後點擊<a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\">這裡</a>。</p>",
+          "en": "<p>This is a userscript for reading comics at <a href=\"http://www.dm5.com/\" target=\"_blank\">DM5</a>. It can show all pages of a comic chapter at once and turn to next chapter automatically when finish reading.<br><br></p>\
+                  <img class=\"lazy img-responsive\" data-original=\"./img/works/content/dm5viewer.png\" class=\"img-responsive\"><br><br>\
+                  <p>\
+                    Please make sure there is a userscript manager in your browser before installing it.<br>\
+                    <a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\" alt=\"Install\"><img class=\"lazy img-responsive\" data-original=\"./img/works/content/install.png\" alt=\"Install\"></a>\
+                  </p>\
+                  <h4>Feature</h4>\
+                  <ul>\
+                    <li>Show all pages at once</li>\
+                    <li>Change background color (carbon black / whie)</li>\
+                    <li>Automatic width adaptability</li>\
+                    <li>Automatically scrolling</li>\
+                    <li>Turn to next chapter automatically</li>\
+                    <li>Show current page number</li>\
+                    <li>Record where you left off</li>\
+                    <li>Enable automatically scrolling via spacebar</li>\
+                  </ul>\
+                  <h4>Installation</h4>\
+                  <p>Please install <a href=\"http://tampermonkey.net/\" target=\"_blank\">Tampermonkey</a> (Safari、Chrome) or <a href=\"https://addons.mozilla.org/zh-tw/firefox/addon/greasemonkey/\" target=\"_blank\">GreaseMonkey</a> (Firefox) first, and then click <a href=\"https://github.com/emma2334/DM5-Veiwer/raw/master/DM5Viewer.user.js\">here</a>.</p>"
         }
       }
     }
-  }
+  ]
 }
