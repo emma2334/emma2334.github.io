@@ -1,0 +1,96 @@
+/* ------------------------
+    Common
+------------------------ */
+.full-page{
+  height: 100vh;
+}
+
+
+/* ------------------------
+    section#home
+------------------------ */
+#home .background {
+  background: url("../img/background.jpg") 50% 0 no-repeat fixed;
+  background-size: cover;
+}
+
+#slogan{
+  height: 280px;
+  width: 280px;
+  font-family: "Raleway";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0.8;
+  background-color: white;
+  left: 15%;
+  bottom: 40%;
+}
+
+#slogan::after {
+  content: '';
+  top: -15px;
+  right: -15px;
+  bottom: -15px;
+  left: -15px;
+  border: 7px solid #fff;
+  position: absolute;
+}
+
+#slogan>div {
+  text-align: center;
+}
+
+#slogan h1 {
+  margin: 0px 0px 10px 0px;
+}
+
+#slogan h4 {
+  display: flex;
+  margin: 0px;
+
+}
+
+#slogan h4 span {
+  width: 50%;
+  margin: 0px 10px;
+}
+
+#scroll-down-notice {
+  font-family: "Raleway";
+  font-weight: bolder;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4em;
+  text-align: center;
+  text-transform: uppercase;
+
+  background: #FFF -webkit-gradient(linear, left top, right top, from(#FFF), to(#FFF), color-stop(0.5, #8e8e8e)) 0 0 no-repeat;
+  -webkit-background-size: 125px;
+
+  color: rgba(255, 255, 255, 0.1);
+  -webkit-background-clip: text;
+
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+#scroll-down-notice:after {
+  content: "";
+  position: absolute;
+  top: 2em;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -1em;
+  border: 1em solid transparent;
+  border-top: 1em solid #FFF;
+}
+
+@-webkit-keyframes shine {
+  0% { background-position: top left; }
+  100% { background-position: top right; }
+}
