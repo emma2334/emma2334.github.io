@@ -9,55 +9,115 @@
 /* ------------------------
     section#home
 ------------------------ */
+#home:after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 20px solid #fff;
+}
+
 #home .background {
   background: url("../img/background.jpg") 50% 0 no-repeat fixed;
   background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
-#slogan{
-  height: 280px;
-  width: 280px;
-  font-family: "Raleway";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  opacity: 0.8;
-  background-color: white;
-  left: 15%;
-  bottom: 40%;
-}
-
-#slogan::after {
-  content: '';
-  top: -15px;
-  right: -15px;
-  bottom: -15px;
-  left: -15px;
-  border: 7px solid #fff;
+#home .background:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.6);
   position: absolute;
 }
 
-#slogan>div {
+#home header{
   text-align: center;
-}
-
-#slogan h1 {
-  margin: 0px 0px 10px 0px;
-}
-
-#slogan h4 {
+  position: absolute;
+  width: calc(80vw - 5px);
+  top: 15vh;
+  left: 10vw;
+  height: calc(70vh - 5px);
+  margin: 5px 0 0 5px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  margin: 0px;
-
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-#slogan h4 span {
-  width: 50%;
-  margin: 0px 10px;
+#home header h1{
+  width: 100vw;
+  text-transform: none;
+  font-size: 8vw;
+  color: #000;
+  margin: 0;
+  padding: 0 0 0.35em;
+}
+
+#home header.active h1 {
+  -webkit-animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  -moz-animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+#home header p {
+  font-size: 1.5em;
+}
+
+@-webkit-keyframes tracking-in-contract{0%{letter-spacing:0.5em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}@keyframes tracking-in-contract{0%{letter-spacing:0.5em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}
+
+.decolines {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.decolines--fixed {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.decoline {
+  position: absolute;
+}
+
+.codrops-header__title {
+  margin: 0;
+  padding: 0 0 0.15em 0;
+  font-size: 9vw;
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 50em) {
+  #home header {
+    padding: 1em;
+  }
+  #home:after {
+    border-width: 10px;
+  }
 }
 
 #scroll-down-notice {
+  display: none;
   font-family: "Raleway";
   font-weight: bolder;
   position: absolute;
