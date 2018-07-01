@@ -3,28 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Emma Chung</title>
-  <link rel="SHORTCUT ICON" href="./img/favicons/favicon.png"/>
+  <link rel="SHORTCUT ICON" href="./images/favicons/favicon.png"/>
   <meta property="og:title" content="Emma Chung" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://emma2334.github.io/" />
-  <meta property="og:image" content="http://emma2334.github.io/img/favicons/og.jpg" />
+  <meta property="og:url" content="https://emma2334.github.io/" />
+  <meta property="og:image" content="https://emma2334.github.io/images/favicons/og.jpg" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/main.css">
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/jquery.scrolly.js"></script>
-  <script src="./js/anime.min.js"></script>
-  <script src="./js/line.js"></script>
+  <script src="./javascript/jquery.min.js"></script>
+  <script src="./javascript/anime.min.js"></script>
+  <script src="./javascript/line.js"></script>
+  <script src="./javascript/vue.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 <body>
-  <section id="home" class="full-page">
-    <div class="background parallax" data-velocity="-.6"></div>
+  <section id="home" class="header full-page">
     <header>
-      <h1 class="codrops-header__title">Emma Chung</h1>
-      <p class="sponsor">A Front-End Developer</p>
+      <h1>Emma Chung</h1>
+      <p>A Front-End Developer</p>
+      <div id="scroll-down-notice"></div>
     </header>
-    <div id="scroll-down-notice">Scroll Down</div>
   </section>
+  <nav>
+    <a href="#about">
+      <p v-for="p in menu">{{ p }}</p>
+    </a>
+  </nav>
+  <div class="content">
+    <section id="about">
+      <div class="container">
+        <h2>{{title}}</h2>
+        <div class="row">
+          <div class="col-md-3">
+            <img src="./images/profile.jpg" alt="profile pic" class="img-circle img-thumbnail img-responsive">
+          </div>
+          <div class="col-md-9">
+            <div class="content">
+              <p v-for="i in info">{{ i }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <script src="./js/main.js"></script>
+  <script src="./data/content.js"></script>
+  <script src="./javascript/view.js"></script>
+  <script src="./javascript/main.js"></script>
 </body>
 </html>

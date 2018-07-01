@@ -1,14 +1,96 @@
 /* ------------------------
+
     Common
+
 ------------------------ */
-.full-page{
+.full-page {
   height: 100vh;
 }
 
+/*section:not(:first-child) {
+  padding: 50px 0;
+}*/
+
+body {
+  background: #fff url("../images/background.png") repeat;
+}
+
+.content section {
+  padding: 50px 0;
+}
+
+.content section:nth-child(even) {
+  background-color: #b1ceff;
+}
+
+.content section h2 {
+  margin: 0 0 25px 0;
+  text-transform: uppercase;
+}
+
+
+/* Slide effect */
+
+body.phone:not(.modify) {
+  overflow: hidden;
+}
+
+body:not(.notrans) #home,
+body:not(.notrans) > nav,
+body:not(.notrans) > .content {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+body:not(.notrans) #home {
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  -webkit-transition-duration: 1.2s;
+  transition-duration: 1.2s;
+}
+
+body #home {
+  position: absolute;
+  z-index: 1500;
+}
+
+body > .content {
+  -webkit-transform: translateY(400px);
+  transform: translateY(400px);
+  opacity: 0;
+}
+
+body.modify > nav,
+body.modify > .content {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+body.modify #home {
+  opacity: 0;
+  -webkit-transform: translateY(-100%) scale(0.9);
+  transform: translateY(-100%) scale(0.9);
+}
+
+/* Delays */
+
+body.modify:not(.notrans) > nav,
+body.modify:not(.notrans) > .content {
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+
+
 
 /* ------------------------
-    section#home
+
+    Home
+
 ------------------------ */
+
 #home:after {
   content: '';
   pointer-events: none;
@@ -17,17 +99,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 20px solid #fff;
+  border: 40px solid #fff;
 }
 
-#home .background {
-  background: url("../img/background.jpg") 50% 0 no-repeat fixed;
+#home {
+  width: 100vw;
+  height: 100vh;
+  background: url("../images/background.jpg") 50% 50% no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 100%;
 }
 
-#home .background:after {
+#home:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -58,25 +140,61 @@
 }
 
 #home header h1{
-  width: 100vw;
-  text-transform: none;
+  width: calc(100vw - 5px);
   font-size: 8vw;
   color: #000;
   margin: 0;
   padding: 0 0 0.35em;
+  white-space: nowrap;
+  opacity: 0;
 }
 
-#home header.active h1 {
+#home.active header h1 {
   -webkit-animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   -moz-animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   animation: tracking-in-contract 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
+.phone #home header h1 {
+  font-size: 9vw;
+}
+
 #home header p {
+  margin: 0;
   font-size: 1.5em;
 }
 
-@-webkit-keyframes tracking-in-contract{0%{letter-spacing:0.5em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}@keyframes tracking-in-contract{0%{letter-spacing:0.5em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}
+.phone #home header p {
+  font-size: 1em;
+}
+
+@-webkit-keyframes tracking-in-contract{
+  0%{
+    letter-spacing:0.5em;
+    opacity:0
+  }
+  40%{
+    opacity:.6
+  }
+  100%{
+    letter-spacing:normal;
+    opacity:1
+  }
+}
+
+@keyframes tracking-in-contract{
+  0%{
+    letter-spacing: 0.5em;
+    opacity: 0
+  }
+  40%{
+    opacity:.6
+  }
+  100%{
+    letter-spacing:normal;
+    opacity:1
+  }
+}
 
 .decolines {
   pointer-events: none;
@@ -98,15 +216,6 @@
   position: absolute;
 }
 
-.codrops-header__title {
-  margin: 0;
-  padding: 0 0 0.15em 0;
-  font-size: 9vw;
-  text-transform: uppercase;
-  line-height: 1;
-  font-weight: normal;
-}
-
 @media screen and (max-width: 50em) {
   #home header {
     padding: 1em;
@@ -116,6 +225,9 @@
   }
 }
 
+
+/* Scroll down notice */
+
 #scroll-down-notice {
   display: none;
   font-family: "Raleway";
@@ -123,11 +235,14 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 4em;
+  bottom: 80px;
   text-align: center;
   text-transform: uppercase;
+  cursor: pointer;
+}
 
-  background: #FFF -webkit-gradient(linear, left top, right top, from(#FFF), to(#FFF), color-stop(0.5, #8e8e8e)) 0 0 no-repeat;
+body:not(.phone) #scroll-down-notice {
+  background: #464646 -webkit-gradient(linear, left top, right top, from(#FFF), to(#FFF), color-stop(0.5, #8e8e8e)) 0 0 no-repeat;
   -webkit-background-size: 125px;
 
   color: rgba(255, 255, 255, 0.1);
@@ -136,6 +251,15 @@
   -webkit-animation-name: shine;
   -webkit-animation-duration: 4s;
   -webkit-animation-iteration-count: infinite;
+}
+
+#scroll-down-notice:before {
+  content: "Scroll Down";
+}
+
+@-webkit-keyframes shine {
+  0% { background-position: top left; }
+  100% { background-position: top right; }
 }
 
 #scroll-down-notice:after {
@@ -147,10 +271,79 @@
   height: 0;
   margin-left: -1em;
   border: 1em solid transparent;
-  border-top: 1em solid #FFF;
+  border-top: 1em solid #464646;
 }
 
-@-webkit-keyframes shine {
-  0% { background-position: top left; }
-  100% { background-position: top right; }
+.phone #scroll-down-notice:before {
+  content: "Press to enter";
+}
+
+
+
+/* ------------------------
+
+    Navbar
+
+------------------------ */
+
+nav {
+  position: fixed;
+  background: #383838;
+  z-index: 999;
+}
+
+
+
+/* ------------------------
+
+    About
+
+------------------------ */
+
+
+
+
+
+/* ------------------------
+
+    Media Queries
+
+------------------------ */
+
+@media (max-width: 991px) {
+  body > nav {
+    height: 3.5em;
+    width: 100vw;
+    top: 0;
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+
+  body > .content {
+    padding-top: 3.5em;
+  }
+
+  #about img {
+    display: block;
+    max-width: 150px;
+    margin: 0 auto 25px;
+  }
+}
+
+@media (min-width: 992px) {
+  body > nav {
+    height: 100vh;
+    width: 300px;
+    -webkit-transform: translateY(100vw);
+    transform: translateY(100vw);
+  }
+
+  body > .content {
+    margin-left: 300px;
+  }
+
+  section .container {
+    width: auto;
+    padding: 0 100px;
+  }
 }
