@@ -12,7 +12,7 @@
 }*/
 
 body {
-  background: #fff url("../images/background.png") repeat;
+  background: #fff url("../img/background.png") repeat;
 }
 
 .content section {
@@ -105,7 +105,7 @@ body.modify:not(.notrans) > .content {
 #home {
   width: 100vw;
   height: 100vh;
-  background: url("../images/background.jpg") 50% 50% no-repeat;
+  background: url("../img/background.jpg") 50% 50% no-repeat;
   background-size: cover;
 }
 
