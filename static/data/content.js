@@ -39,43 +39,56 @@ var CONTENT = {
     experience: {
       list: [
         {
-          company: '中興⼤學圖書館校史館組',
+          company: {
+            name: '中興⼤學圖書館校史館組',
+            url: 'http://archive.nchu.edu.tw/',
+          },
           title: '工讀生',
           duration: '2015/1 - 2016/1',
           tech: ['jsp', 'Dspace'],
           info: [
-            '將機構典藏系統前端樣式客製化並串接論⽂分析相關 API（例如 PubMed、Altmetric）。',
-            '偶爾修復系統（JSP 專案）沒有正常運作的功能。',
+            '將機構典藏系統前端樣式客製化並串接論⽂分析相關 API（例如 PubMed、Altmetric）',
+            '偶爾修復系統（JSP 專案）沒有正常運作的功能',
           ],
         },
         {
-          company: '享萊 Sharelike',
+          company: {
+            name: '享萊 Sharelike',
+            url: 'https://sharelike.asia/',
+          },
           title: '實習生',
           duration: '2015/7 - 2015/8',
           tech: ['Rails', 'WordPress'],
           info: [
-            '期間內接受 Ruby on Rails 訓練，開發通⽤點數功能。',
-            '與⾏銷部⾨配合改善公司形象網⾴，導入 SEO 加強網⾴曝光率，並將預約體驗表格導入 Google 表單以便⾏銷部⾨彙整。',
+            '期間內接受 Ruby on Rails 訓練，開發通⽤點數功能',
+            '與⾏銷部⾨配合改善公司形象網⾴，導入 SEO 加強網⾴曝光率，並將預約體驗表格導入 Google 表單以便⾏銷部⾨彙整',
           ],
         },
         {
-          company: '數巨飛船',
+          company: {
+            name: '數巨飛船 Informaship',
+            url: 'https://informaship.com/',
+          },
           title: '前端工程師',
           duration: '2017/5 - 2018/10',
           tech: ['Meteor.js', 'Phaser.js', 'LESS', 'MongoDB', 'WordPress'],
           info: [
             '主要負責網⾴前端開發，偶爾兼顧後端開發。',
-            '選定 Meteor 搭配 LESS 和 Bootstrap 為主要開發架構，但仍會依案件類型採⽤不同的框架或後端語⾔。',
-            '⼤多開發活動互動式體驗應⽤，因此⼗分注重⽤⼾體驗和響應式設計，曾經參與麥當勞員⼯⼤會、Samsung S9 點食晨⾦等活動系統開發。',
+            '選定 Meteor 搭配 LESS 和 Bootstrap 為主要開發架構，但仍會依案件類型採⽤不同的框架或後端語⾔，因此需要具備能短時間學習並能使用新技術的能力',
+            '⼤多開發活動互動式體驗應⽤，因此⼗分注重⽤⼾體驗和響應式設計，曾經參與麥當勞員⼯⼤會、Samsung S9 點食晨⾦等活動系統開發',
           ],
         },
         {
-          company: '數果數位',
+          company: {
+            name: '數果數位 SUGOI',
+            url: 'https://www.popdaily.com.tw/',
+          },
           title: '全端工程師',
           duration: '2018/11 - 2020/7',
           tech: ['ejs', 'React', 'SASS', 'Node,js', 'MongoDB'],
           info: [
-            '負責波波黛莉網頁前端與 api 開發，想辦法在瀏覽器與 web app 間取得用戶最佳體驗',
+            '負責<a href="https://www.popdaily.com.tw" target="_blank">波波黛莉</a>網頁前端、api 開發與維護，想辦法在瀏覽器與 web app 間取得用戶最佳體驗',
+            '開發美食地圖、話題等功能、參與 react、AMP 版本重構計畫',
           ],
         },
       ],
@@ -116,6 +129,9 @@ var CONTENT = {
     nav: {
       sections: {
         about: 'about me',
+        skill: 'skills',
+        experience: 'experience',
+        portfolio:'portfolio',
       }
     },
     about: {
@@ -124,6 +140,117 @@ var CONTENT = {
         'I did an exchange program to Poland in 2016 for a half year. I\'m always confident with embracing new things, hence there were more priceless experiences than culture shock. Many first times happened in this duration: skiing, sky diving, first solo long distance trip, couch surfing... and the most precious of all, taking a blah blah car from someone who shared no common language with me. Thanks to Google translation, it turned out to be an extremely wonderful memory',
         'learning new things, it won\'t be a tough process. I\'m eager to be challenged and improve! Excepting IT field, I also find interest in cultures and arts.'
       ],
+    },
+    skill: {
+      skills: {
+        frontend: {
+          CSS: 4,
+          JavaScript: 3,
+          React: 2,
+        },
+        backend: {
+          'Node.js': 2,
+          Rails: 1,
+          PHP: 1,
+        },
+        others: {
+          MongoDB: 2,
+          'Meteor.js': 2,
+        },
+        tools: {
+          Git: 3,
+        }
+      }
+    },
+    experience: {
+      list: [
+        {
+          company: {
+            name: 'NCHU Library Archive',
+            url: 'http://archive.nchu.edu.tw/',
+          },
+          title: 'part-time worker',
+          duration: '2015/1 - 2016/1',
+          tech: ['jsp', 'Dspace'],
+          info: [
+            'Integrated thesis attention analyzing APIs (such as PubMed and Altmetric)',
+            'Maintain and develop institutional repository system',
+          ],
+        },
+        {
+          company: {
+            name: 'Sharelike',
+            url: 'https://sharelike.asia/',
+          },
+          title: 'intern',
+          duration: '2015/7 - 2015/8',
+          tech: ['Rails', 'WordPress'],
+          info: [
+            'Attended Ruby on Rails training session in order to complete development of new features of a universal loyalty points system',
+            'Collaborate with marketing department on improving SEO performance',
+          ],
+        },
+        {
+          company: {
+            name: 'Informaship',
+            url: 'https://informaship.com/',
+          },
+          title: 'frontend developer',
+          duration: '2017/5 - 2018/10',
+          tech: ['Meteor.js', 'Phaser.js', 'LESS', 'MongoDB', 'WordPress'],
+          info: [
+            'Involved in backend development as well',
+            'Adapting new technology in short time is required, since the choice of framework is different from case to case',
+            'Focusing on user experiences. Always fine-tune UI/UX according to user feedback',
+          ],
+        },
+        {
+          company: {
+            name: 'SUGOI',
+            url: 'https://www.popdaily.com.tw/',
+          },
+          title: 'full stack web developer',
+          duration: '2018/11 - 2020/7',
+          tech: ['ejs', 'React', 'SASS', 'Node,js', 'MongoDB'],
+          info: [
+            'Develop and maintain both api and web frontend in <a href="https://www.popdaily.com.tw" target="_blank">Popdaily</a>',
+            'Involved in development of food map, topic, etc',
+            'Participated in refactor of react and AMP version',
+            'Make sure user experience keeps well in both browser and web app'
+          ],
+        },
+      ],
+    },
+    portfolio: {
+      list: [
+        {
+          title: 'Taiwan dengue map',
+          type: 'static web',
+          img: 'dengue_tw.png',
+          des: 'Visualize data with D3.js to see dengue infection severity in Taiwan (data was only updated to 2018/6 in demo page)',
+          tags: ['D3.js'],
+          link: 'https://emma2334.github.io/dengue_tw/',
+          github: 'https://github.com/emma2334/dengue_tw',
+        },
+        {
+          title: 'Redirect to latest post',
+          type: 'WordPress plugin',
+          img: 'RCLP.png',
+          des: 'Setup whether navbar links redirect to the latest post of an category by only a click on checkbox',
+          tags: ['wordpress'],
+          link: 'https://wordpress.org/plugins/redirect-to-latest-post-in-category/',
+          github: 'https://github.com/emma2334/wp-redirect-to-category-latest-post',
+        },
+        {
+          title: 'DM5 Viewer',
+          type: 'user script',
+          img: 'dm5-reader.png',
+          des: 'In order to read comics in a lazy way, I wrote a script which contains those awesome features in comic apps when I was in college',
+          tags: ['javascript'],
+          link: 'https://emma2334.github.io/DM5-Viewer/',
+          github: 'https://github.com/emma2334/DM5-Viewer',
+        }
+      ]
     },
   }
 }

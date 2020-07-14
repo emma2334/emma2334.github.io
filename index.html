@@ -31,7 +31,17 @@
     <a id="scroll-down-notice" href="#about"></a>
   </section>
   <nav>
-    <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
+    <div class="name" v-on:click="scrollToTop">Emma Chung</div>
+    <div class="menu">
+      <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
+    </div>
+    <icon-global class="lang" v-bind:onclick="switchLang">
+      <input type="radio" name="lang" id="zh-tw" v-bind:checked="lang == 'zh-tw'" v-on:change="changeLang('zh-tw')">
+      <label for="zh-tw">中文</label>
+      /
+      <input type="radio" name="lang" id="en" v-bind:checked="lang == 'en'" v-on:change="changeLang('en')">
+      <label for="en">English</label>
+    </icon-global>
   </nav>
   <div class="content">
     <section id="about">
@@ -69,9 +79,9 @@
         <div class="row">
           <div v-for="e in list.slice().reverse()" class="wrapper col-12">
             <i class="duration">{{e.duration}}</i>
-            <h3>{{e.company}} <span>{{e.title}}</span></h3>
+            <h3>{{e.title}}，<a v-bind:href="e.company.url" target="_blank">{{e.company.name}}</a></h3>
             <ul>
-              <li v-for="i in e.info">{{i}}</li>
+              <li v-for="i in e.info" v-html="i"></li>
             </ul>
             <div class="tech">
               <span v-for="t in e.tech" class="tag">{{t}}</span>

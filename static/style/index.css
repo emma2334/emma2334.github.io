@@ -352,8 +352,17 @@ body:not(.phone) #scroll-down-notice {
 nav {
   position: -webkit-sticky;
   position: sticky;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   top: 0;
   background: #383838;
+  color: #fff;
   z-index: 999;
   -webkit-transition: transform .8s;
   -webkit-transition: -webkit-transform .8s;
@@ -371,10 +380,15 @@ nav.active {
   opacity: 1;
 }
 
+nav .name {
+  display: none;
+}
+
 nav a {
   position: relative;
-  color: #FFF;
+  color: #fff;
   line-height: 2;
+  text-transform: uppercase;
 }
 
 nav a:before {
@@ -384,13 +398,42 @@ nav a:before {
   background-color: #FD998E;
 }
 
+nav .lang svg {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+nav .lang input {
+  display: none;
+}
+
+nav .lang label {
+  line-height: 3;
+  padding: 0 .5rem;
+  cursor: pointer;
+}
+
+/*nav .lang input:checked + label,*/
+nav .lang svg:hover,
+nav .lang label:hover {
+  color: #FD998E;
+}
+
+@media (max-width: 575.98px) {
+  nav .name {
+    display: block;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  nav .menu {
+    display: none;
+  }
+}
+
 @media (max-width: 991.98px) {
   nav {
     position: fixed;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-align: center;
        -moz-box-align: center;
         -ms-flex-align: center;
@@ -426,10 +469,25 @@ nav a:before {
   nav a.active:before {
     width: 30px;
   }
+
+  nav .lang {
+    font-size: 0;
+    padding: 0 1rem;
+  }
+
+  nav .lang label {
+    display: none;
+  }
 }
 
 @media (min-width: 992px) {
   nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height: 100vh;
     width: 300px;
     -webkit-transform: translateY(100vw);
@@ -464,6 +522,11 @@ nav a:before {
 
   nav a.active:before {
     max-height: 100%;
+  }
+
+  nav .lang {
+    padding: 0 1.5rem;
+    background-color: #2b2b2b;
   }
 }
 
@@ -573,8 +636,17 @@ nav a:before {
   color: #964d38;
 }
 
-#experience h3 span {
+#experience h3 {
+  text-transform: capitalize;
+}
+
+#experience h3 a {
+  color: #000;
   font-size: .9rem;
+}
+
+#experience h3 a:hover {
+  color: #FD998E;
 }
 
 #experience .tech {
@@ -609,6 +681,14 @@ nav a:before {
        background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#portfolio .card h3 {
+  margin-bottom: 10px;
+}
+
+#portfolio .card p {
+  margin-top: 0;
 }
 
 #portfolio .card .info {
