@@ -9,27 +9,29 @@
   <meta property="og:url" content="https://emma2334.github.io/" />
   <meta property="og:image" content="https://emma2334.github.io/images/favicons/og.jpg" />
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC:400,800" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./static/style/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="./static/style/normalize.min.css">
   <link rel="stylesheet" href="./static/style/index.css">
   <script src="./static/js/jquery.min.js"></script>
-  <script src="./static/js/anime.min.js"></script>
-  <script src="./static/js/line.js"></script>
   <script src="./static/js/vue.min.js"></script>
-  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 <body>
-  <section id="home" class="header full-page">
+  <div id="preload"></div>
+  <section id="home">
     <header>
       <h1>Emma Chung</h1>
-      <p>A Front-End Developer</p>
-      <div id="scroll-down-notice"></div>
+      <p>
+        <a href="https://github.com/emma2334">GitHub</a>．
+        <a href="https://emma84811.wordpress.com">Blog</a>．
+        <a href="http://www.linkedin.com/in/emma2334">LinkedIn</a>
+      </p>
     </header>
+    <a id="scroll-down-notice" href="#about"></a>
   </section>
   <nav>
-    <a href="#about">
-      <p v-for="p in menu">{{ p }}</p>
-    </a>
+    <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
   </nav>
   <div class="content">
     <section id="about">
@@ -37,11 +39,66 @@
         <h2>{{title}}</h2>
         <div class="row">
           <div class="col-md-3">
-            <img src="./static/img/profile.jpg" alt="profile pic" class="img-circle img-thumbnail img-responsive">
+            <img src="./static/img/profile.jpg" alt="profile pic" class="rounded-circle img-thumbnail img-responsive">
           </div>
           <div class="col-md-9">
-            <div class="content">
-              <p v-for="i in info">{{ i }}</p>
+            <p v-for="i in info">{{ i }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skill">
+      <div class="container">
+        <h2>{{title}}</h2>
+        <div class="row">
+          <div v-for="(skill, type) in skills" class="wrapper col-md-6">
+            <h3>{{type}}</h3>
+            <ul>
+              <li v-for="(score, name) in skill">
+                {{name}}
+                <span v-bind:data-score="score" v-bind:data-msg="msg(score)"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="experience">
+      <div class="container">
+        <h2>{{title}}</h2>
+        <div class="row">
+          <div v-for="e in list.slice().reverse()" class="wrapper col-12">
+            <i class="duration">{{e.duration}}</i>
+            <h3>{{e.company}} <span>{{e.title}}</span></h3>
+            <ul>
+              <li v-for="i in e.info">{{i}}</li>
+            </ul>
+            <div class="tech">
+              <span v-for="t in e.tech" class="tag">{{t}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="portfolio">
+      <div class="container">
+        <h2>{{title}}</h2>
+        <div class="row">
+          <div class=" wrapper col-md-6" v-for="e in list.slice().reverse()">
+            <div class="card">
+              <div v-if="e.img" v-bind:style="'background-image: url(' + img(e.img) + ');'" class="img"></div>
+              <div class="info">
+                <span class="type">{{e.type}}</span>
+                <h3>
+                  {{e.title}}
+                  <icon-github v-if="e.github" v-bind:href="e.github"></icon-github>
+                  <icon-link v-if="e.link" v-bind:href="e.link"></icon-link>
+                </h3>
+                <p>{{e.des}}</p>
+              </div>
+              <div class="tags">
+                <span v-for="tag in e.tags" class="tag reverse">{{tag}}</span>
+              </div>
             </div>
           </div>
         </div>
