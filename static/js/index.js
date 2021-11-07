@@ -1,53 +1,51 @@
-(function() {
-
+;(function () {
   // Smooth scroll
-  $(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
+  $(document).on('click', 'a[href^="#"]', e => {
+    e.preventDefault()
+    $('html, body').animate(
+      { scrollTop: $($.attr(e.currentTarget, 'href')).offset().top + 1 },
+      500
+    )
+  })
 
-    $('html, body').animate({
-      scrollTop: $($.attr(this, 'href')).offset().top + 1
-    }, 500)
-  });
+  // Manage animation of cover section and navbar
+  new IntersectionObserver(
+    entries => {
+      const { isIntersecting, intersectionRatio } = entries[0]
+      $('#home').toggleClass('active', isIntersecting)
+      $('nav').toggleClass('active', intersectionRatio < 0.7)
+    },
+    { threshold: [0, 0.7] }
+  ).observe($('#home')[0])
 
-  // intersection observer
-  new IntersectionObserver(function (entries) {
-    var intersectionRatio = entries[0].intersectionRatio
-    $('#home').toggleClass('active', intersectionRatio >= 0.2)
-    $('nav').toggleClass('active', intersectionRatio != 1)
-  }, {
-    threshold: [...new Array(11)].map((e, i) => i * 0.1),
-  }).observe($('#home')[0])
-
-  var observe = new Map()
-  var sectionObserve = new IntersectionObserver(function (entries, e) {
-    entries.forEach(function (entry) {
-      var target = entry.target
-      var intersectionRatio = entry.intersectionRatio
-      var isIntersecting = entry.isIntersecting
-
-      observe.set(target, isIntersecting)
-
-      if(intersectionRatio >= 0.2) $(target).addClass('active')
-      if(intersectionRatio < 0.1 || !isIntersecting) $(target).removeClass('active')
-    })
-    var sections = $('.content > section').toArray().map(function (e) { return $(e).attr('id')})
-    var highlighted = Array.from(observe.values()).indexOf(true)
-    if (highlighted > -1) {
+  // Check if sections are visible
+  const observe = {}
+  const sectionObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const { target, intersectionRatio, isIntersecting } = entry
+        observe[$(target).attr('id')] = intersectionRatio > 0.3
+        $(target).toggleClass('active', isIntersecting)
+      })
+      const highlighted = Object.keys(observe).find(
+        key => observe[key] === true
+      )
+      if (highlighted) {
         $('nav a').removeClass('active')
-        $('[href=#' + sections[highlighted] + ']').addClass('active')
-    }
-  }, {
-    threshold: [...new Array(11)].map((e, i) => i * 0.1),
-  })
+        $('[href=#' + highlighted + ']').addClass('active')
+      }
+    },
+    { rootMargin: '0px 0px -5% 0px', threshold: [0, 0.3] }
+  )
   $('.content > section').each((i, dom) => {
-    sectionObserve.observe(dom)
-    observe.set(dom, false)
+    sectionObserver.observe(dom)
   })
 
-  $(window).on('load', function() {
-    setTimeout(function() {
-      $('#preload').fadeOut('slow')
-      $('#home').addClass('active')
-    }, 100);
-  });
-})();
+  // Reveal when cover image is ready
+  const img = document.createElement('img')
+  img.src = './static/img/cover.jpg'
+  img.onload = function () {
+    $('#preload').fadeOut('slow')
+    $('#home').addClass('active')
+  }
+})()
