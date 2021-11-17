@@ -1,42 +1,38 @@
-var initLanguage = function (callback) {
-  var langDomain = ['zh-tw', 'en']
-
-  // get param
-  var getQueryParam = function (param) {
-    var found
-    window.location.search
-      .substr(1)
-      .split('&')
-      .forEach(function (item) {
-        if (param == item.split('=')[0]) {
-          found = item.split('=')[1]
-        }
-      })
-    return found
-  }
-
-  // set lang
-  var lang = getQueryParam('lang')
-  if (lang == null) {
-    lang = navigator.language || navigator.userLanguage
-  }
-
-  lang = lang.toLowerCase()
-
-  if (!langDomain.includes(lang)) {
-    lang = 'en'
+;(() => {
+  /* Parameters */
+  // Check language
+  const langDomain = ['zh-tw', 'en']
+  let CURRENT_LANG = (
+    window.location.search.match('lang=([^&]+)')?.[1] ||
+    navigator.language ||
+    navigator.userLanguage
+  ).toLowerCase()
+  if (!langDomain.includes(CURRENT_LANG)) {
+    CURRENT_LANG = 'en'
     console.log(
-      `Language "${lang}" is unavailable, context will be shown in English.`
+      `Language "${CURRENT_LANG}" is unavailable, context will be shown in English.`
     )
   }
 
-  callback(lang)
-}
+  // Translation for each section
+  const TITLE = {
+    'zh-tw': {
+      about: '關於我',
+      skill: '技能',
+      experience: '工作經驗',
+      portfolio: '作品集',
+    },
+    en: {
+      about: 'about me',
+      skill: 'skills',
+      experience: 'experience',
+      portfolio: 'portfolio',
+    },
+  }
 
-initLanguage(function (CURRENT_LANG) {
-  console.log('Init Vue, CURRENT_LANG: ' + CURRENT_LANG)
-
-  var icon = [
+  /* Templates */
+  // Icons
+  ;[
     {
       type: 'github',
       viewBox: '0 0 512 512',
@@ -44,162 +40,153 @@ initLanguage(function (CURRENT_LANG) {
     },
     {
       type: 'link',
+      viewBox: '0 0 16 16',
       icon: '<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z"/><path fill-rule="evenodd" d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z"/>',
     },
     {
       type: 'global',
+      viewBox: '0 0 16 16',
       icon: '<path fill-rule="evenodd" d="M1.018 7.5h2.49c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5zM2.255 4H4.09a9.266 9.266 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.024 7.024 0 0 0 2.255 4zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm-.5 1.077c-.67.204-1.335.82-1.887 1.855-.173.324-.33.682-.468 1.068H7.5V1.077zM7.5 5H4.847a12.5 12.5 0 0 0-.338 2.5H7.5V5zm1 2.5V5h2.653c.187.765.306 1.608.338 2.5H8.5zm-1 1H4.51a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm1 2.5V8.5h2.99a12.495 12.495 0 0 1-.337 2.5H8.5zm-1 1H5.145c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12zm-2.173 2.472a6.695 6.695 0 0 1-.597-.933A9.267 9.267 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM1.674 11H3.82a13.651 13.651 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm8.999 3.472A7.024 7.024 0 0 0 13.745 12h-1.834a9.278 9.278 0 0 1-.641 1.539 6.688 6.688 0 0 1-.597.933zM10.855 12H8.5v2.923c.67-.204 1.335-.82 1.887-1.855A7.98 7.98 0 0 0 10.855 12zm1.325-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm.312-3.5h2.49a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.91 4a9.277 9.277 0 0 0-.64-1.539 6.692 6.692 0 0 0-.597-.933A7.024 7.024 0 0 1 13.745 4h-1.834zm-1.055 0H8.5V1.077c.67.204 1.335.82 1.887 1.855.173.324.33.682.468 1.068z"/>',
     },
-  ]
-  icon.map(function (e) {
+  ].map(e => {
     Vue.component('icon-' + e.type, {
-      props: {
-        href: String,
-        onclick: Function,
-      },
+      props: { href: String, onclick: Function },
       template: `
         <a v-if="href" :href="href" class="icon">
-          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
-            e.viewBox || '0 0 16 16'
-          }" fill="currentColor">'${e.icon}</svg>
+          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${e.viewBox}" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
         </a>
         <div v-else :href="href" class="icon">
-          <svg v-on:click="onclick()" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
-            e.viewBox || '0 0 16 16'
-          }" fill="currentColor">'${e.icon}</svg>
+          <svg v-on:click="onclick()" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${e.viewBox}" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
         </div>
       `,
     })
   })
 
+  // Language
+  Vue.component('language', {
+    props: ['id', 'checked'],
+    template: `
+    <span>
+        <input
+          type="radio"
+          name="lang"
+          :id="id"
+          :checked="this.$parent.$parent.lang === id"
+          v-on:change="changeLang(id)"
+        />
+        <label :for="id">
+          <slot></slot>
+         </label>
+       </span>
+    `,
+    methods: {
+      changeLang: lang => {
+        location.href = '?lang=' + lang
+      },
+    },
+  })
+
+  // Section
+  Vue.component('section-template', {
+    props: { id: String },
+    template: `
+      <section :id="id">
+        <div class="container">
+          <h2>{{this.$parent.sections[id]}}</h2>
+          <div class="row">
+            <slot></slot>
+          </div>
+        </div>
+      </section>
+      `,
+  })
+
+  // Experience
+  Vue.component('work', {
+    props: ['data'],
+    computed: {
+      ...Object.fromEntries(
+        ['company', 'url', 'title', 'duration', 'tech', 'info'].map((e, i) => [
+          e,
+          vm => vm.data[i],
+        ])
+      ),
+    },
+  })
+
+  // portfolio
+  Vue.component('card', {
+    props: ['data'],
+    computed: {
+      ...Object.fromEntries(
+        ['title', 'type', 'img', 'des', 'tags', 'github', 'link'].map(
+          (e, i) => [e, vm => vm.data[i]]
+        )
+      ),
+    },
+  })
+
+  /* Root */
+  // Navbar
   new Vue({
     el: 'nav',
     data: {
       lang: CURRENT_LANG,
-      ...CONTENT[CURRENT_LANG].nav,
+      sections: TITLE[CURRENT_LANG],
     },
     methods: {
-      changeLang: function (lang) {
-        location.href = '?lang=' + lang
-      },
-      switchLang: function () {
+      switchLang: () => {
         location.href = '?lang=' + (this.lang == 'zh-tw' ? 'en' : 'zh-tw')
       },
-      scrollToTop: function () {
+      scrollToTop: () => {
         $('html, body').animate({ scrollTop: 0 }, 500)
       },
     },
   })
 
+  // Content
   new Vue({
-    el: '#about',
+    el: '.content',
     data: {
-      title: CONTENT[CURRENT_LANG].nav.sections.about,
-      ...CONTENT[CURRENT_LANG].about,
-    },
-  })
-
-  new Vue({
-    el: '#skill',
-    data: {
-      title: CONTENT[CURRENT_LANG].nav.sections.skill,
+      lang: CURRENT_LANG,
+      sections: TITLE[CURRENT_LANG],
+      about: '',
       skills: {
-        frontend: {
-          CSS: 4,
-          JavaScript: 3,
-          React: 2,
-        },
-        backend: {
-          'Node.js': 2,
-          Rails: 1,
-          PHP: 1,
-        },
-        others: {
-          MongoDB: 2,
-          'Meteor.js': 2,
-        },
-        tools: {
-          Git: 3,
-        },
+        frontend: { CSS: 4, JavaScript: 3, 'React.js': 2, 'Vue.js': 2 },
+        backend: { 'Node.js': 2, Rails: 1, PHP: 1 },
+        others: { MongoDB: 2, 'Meteor.js': 2 },
+        tools: { Git: 3 },
       },
+      experience: null,
+      portfolio: null,
     },
-    methods: {
-      msg: function (score) {
-        var msg = [
-          'no idea',
-          'learned',
-          'average',
-          'above average',
-          'great',
-          'awesome',
-        ]
-        return msg[score]
-      },
-    },
-  })
-
-  new Vue({
-    el: '#experience',
-    data: { title: CONTENT[CURRENT_LANG].nav.sections.experience, list: null },
     mounted() {
-      const $this = this
       fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/1MzCg-NzPuSWk0aNjkw5dVQv1vJKBIWuOCTPjBNe0P6c/values/${CURRENT_LANG}?key=AIzaSyANNuXLVPxlg7vylBwVU0DUS-ypFNVMs8s`
       )
         .then(res => res.json())
-        .then(res => ($this.list = res.values))
+        .then(res => {
+          const data = res.values.reduce(
+            (object, cur) => {
+              object[cur[0]].push(cur.slice(1))
+              return object
+            },
+            { about: [], experience: [], portfolio: [] }
+          )
+          this.about = data.about.flat()[0]
+          this.experience = data.experience
+          this.portfolio = data.portfolio
+        })
     },
     methods: {
-      formatting: data => {
-        const type = ['company', 'url', 'title', 'duration', 'tech', 'info']
-        return type.reduce((object, cur, index) => {
-          object[cur] = data[index]
-          return object
-        }, {})
-      },
-    },
-  })
-
-  Vue.component('Experience', {
-    props: ['company', 'url', 'title', 'duration', 'tech', 'info'],
-    methods: {
-      parseContent: e => e.split('\n'),
+      skillLevel: score =>
+        ['no idea', 'learned', 'average', 'above average', 'great', 'awesome'][
+          score
+        ],
+      parseContent: string => string.split('\n'),
       parseTags: string => string.split(',').map(e => e.trim()),
     },
   })
-
-  new Vue({
-    el: '#portfolio',
-    data: { title: CONTENT[CURRENT_LANG].nav.sections.portfolio, list: null },
-    mounted() {
-      const $this = this
-      fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/1WGBd9NkivW18kFimeYAyGIeDD_ewZ7asxnV4pzXt7G8/values/${CURRENT_LANG}?key=AIzaSyANNuXLVPxlg7vylBwVU0DUS-ypFNVMs8s`
-      )
-        .then(res => res.json())
-        .then(res => ($this.list = res.values))
-    },
-    methods: {
-      formatting: data => {
-        const type = ['title', 'type', 'img', 'des', 'tags', 'github', 'link']
-        return type.reduce((object, cur, index) => {
-          object[cur] = data[index]
-          return object
-        }, {})
-      },
-      parseTags: string => string.split(',').map(e => e.trim()),
-    },
-  })
-
-  Vue.component('Card', {
-    props: ['title', 'type', 'img', 'des', 'tags', 'github', 'link'],
-    methods: {
-      parseTags: string => string.split(',').map(e => e.trim()),
-    },
-    computed: {
-      imgUrl: v => `./static/img/portfolio/${v.img}`,
-    },
-  })
-})
+})()

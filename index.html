@@ -49,121 +49,82 @@
         <a v-for="(e, key) in sections" :href="'#'+key">{{ e }}</a>
       </div>
       <icon-global class="lang" :onclick="switchLang">
-        <input
-          type="radio"
-          name="lang"
-          id="zh-tw"
-          :checked="lang == 'zh-tw'"
-          v-on:change="changeLang('zh-tw')"
-        />
-        <label for="zh-tw">中文</label>
+        <language id="zh-tw">中文</language>
         /
-        <input
-          type="radio"
-          name="lang"
-          id="en"
-          :checked="lang == 'en'"
-          v-on:change="changeLang('en')"
-        />
-        <label for="en">English</label>
+        <language id="en">English</language>
       </icon-global>
     </nav>
     <div class="content">
-      <section id="about">
-        <div class="container">
-          <h2>{{title}}</h2>
-          <div class="row">
-            <div class="col-md-3">
-              <img
-                src="./static/img/profile.jpg"
-                alt="profile pic"
-                class="rounded-circle img-thumbnail img-responsive"
-              />
-            </div>
-            <div class="col-md-9">
-              <p v-for="i in info">{{ i }}</p>
+      <section-template id="about">
+        <div class="col-md-3">
+          <img
+            src="./static/img/profile.jpg"
+            alt="profile pic"
+            class="rounded-circle img-thumbnail img-responsive"
+          />
+        </div>
+        <div class="col-md-9">
+          <p v-for="e in parseContent(about)">{{ e }}</p>
+        </div>
+      </section-template>
+      <section-template id="skill">
+        <div v-for="(skill, type) in skills" class="wrapper col-md-6">
+          <h3>{{ type }}</h3>
+          <ul>
+            <li v-for="(score, name) in skill">
+              {{ name }}
+              <span :data-score="score" :data-level="skillLevel(score)"></span>
+            </li>
+          </ul>
+        </div>
+      </section-template>
+      <section-template id="experience">
+        <work inline-template v-for="e in experience" :key="e[0]" :data="e">
+          <div class="wrapper col-12">
+            <i class="duration">{{ duration }}</i>
+            <h3>
+              {{ title }}，<a :href="url" target="_blank">{{ company }}</a>
+            </h3>
+            <ul>
+              <li v-for="i in parseContent(info)" v-html="i"></li>
+            </ul>
+            <div class="tech">
+              <span v-for="t in parseTags(tech)" class="tag">{{ t }}</span>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="skill">
-        <div class="container">
-          <h2>{{title}}</h2>
-          <div class="row">
-            <div v-for="(skill, type) in skills" class="wrapper col-md-6">
-              <h3>{{type}}</h3>
-              <ul>
-                <li v-for="(score, name) in skill">
-                  {{name}}
-                  <span :data-score="score" :data-msg="msg(score)"></span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="experience">
-        <div class="container">
-          <h2>{{title}}</h2>
-          <div class="row">
-            <Experience
-              inline-template
-              v-for="e in list"
-              v-bind="formatting(e)"
-            >
-              <div class="wrapper col-12">
-                <i class="duration">{{duration}}</i>
+        </work>
+      </section-template>
+      <section-template id="portfolio">
+        <card inline-template v-for="e in portfolio" :key="e[0]" :data="e">
+          <div class="wrapper col-md-6">
+            <div class="card">
+              <div
+                v-if="img"
+                :style="`background-image: url(./static/img/portfolio/${img});`"
+                class="img"
+              ></div>
+              <div class="info">
+                <span class="type">{{ type }}</span>
                 <h3>
-                  {{title}}，<a :href="url" target="_blank">{{company}}</a>
+                  {{ title }}
+                  <icon-github v-if="github" :href="github" target="_blank">
+                  </icon-github>
+                  <icon-link v-if="link" :href="link" target="_blank">
+                  </icon-link>
                 </h3>
-                <ul>
-                  <li v-for="i in parseContent(info)" v-html="i"></li>
-                </ul>
-                <div class="tech">
-                  <span v-for="t in parseTags(tech)" class="tag">{{t}}</span>
-                </div>
+                <p>{{ des }}</p>
               </div>
-            </Experience>
-          </div>
-        </div>
-      </section>
-      <section id="portfolio">
-        <div class="container">
-          <h2>{{title}}</h2>
-          <div class="row">
-            <Card inline-template v-for="e in list" v-bind="formatting(e)">
-              <div class="wrapper col-md-6">
-                <div class="card">
-                  <div
-                    v-if="img"
-                    :style="'background-image: url(' + imgUrl + ');'"
-                    class="img"
-                  ></div>
-                  <div class="info">
-                    <span class="type">{{type}}</span>
-                    <h3>
-                      {{title}}
-                      <icon-github v-if="github" :href="github" target="_blank">
-                      </icon-github>
-                      <icon-link v-if="link" :href="link" target="_blank">
-                      </icon-link>
-                    </h3>
-                    <p>{{des}}</p>
-                  </div>
-                  <div class="tags">
-                    <span v-for="tag in parseTags(tags)" class="tag reverse"
-                      >{{tag}}</span
-                    >
-                  </div>
-                </div>
+              <div class="tags">
+                <span v-for="tag in parseTags(tags)" class="tag reverse">
+                  {{ tag }}
+                </span>
               </div>
-            </Card>
+            </div>
           </div>
-        </div>
-      </section>
+        </card>
+      </section-template>
     </div>
 
-    <script src="./static/data/content.js"></script>
     <script src="./static/js/view.js"></script>
     <script src="./static/js/index.js"></script>
   </body>

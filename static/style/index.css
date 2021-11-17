@@ -676,7 +676,7 @@ nav .lang label:hover {
 }
 
 #skill [data-score]:before {
-  content: attr(data-msg);
+  content: attr(data-level);
   position: absolute;
   top: 0;
   left: 8px;
