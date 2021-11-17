@@ -1,35 +1,40 @@
-var initLanguage = function(callback) {
-  var langDomain = ['zh-tw', 'en'];
+var initLanguage = function (callback) {
+  var langDomain = ['zh-tw', 'en']
 
   // get param
-  var getQueryParam = function(param) {
-    var found;
-    window.location.search.substr(1).split('&').forEach(function(item) {
-      if (param ==  item.split('=')[0]) {
-        found = item.split('=')[1];
-      }
-    });
-    return found;
-  };
+  var getQueryParam = function (param) {
+    var found
+    window.location.search
+      .substr(1)
+      .split('&')
+      .forEach(function (item) {
+        if (param == item.split('=')[0]) {
+          found = item.split('=')[1]
+        }
+      })
+    return found
+  }
 
   // set lang
-  var lang = getQueryParam('lang');
-  if(lang == null){
-    lang = navigator.language || navigator.userLanguage;
+  var lang = getQueryParam('lang')
+  if (lang == null) {
+    lang = navigator.language || navigator.userLanguage
   }
 
-  lang = lang.toLowerCase();
+  lang = lang.toLowerCase()
 
-  if(!langDomain.includes(lang)) {
-    lang = 'en';
-    console.log(`Language "${lang}" is unavailable, context will be shown in English.`);
+  if (!langDomain.includes(lang)) {
+    lang = 'en'
+    console.log(
+      `Language "${lang}" is unavailable, context will be shown in English.`
+    )
   }
 
-  callback(lang);
+  callback(lang)
 }
 
-initLanguage(function(CURRENT_LANG) {
-  console.log('Init Vue, CURRENT_LANG: ' + CURRENT_LANG);
+initLanguage(function (CURRENT_LANG) {
+  console.log('Init Vue, CURRENT_LANG: ' + CURRENT_LANG)
 
   var icon = [
     {
@@ -53,15 +58,19 @@ initLanguage(function(CURRENT_LANG) {
         onclick: {
           type: Function,
           default: function () {},
-        }
+        },
       },
-      template:`
+      template: `
         <a v-if="href" v-bind:href="href" class="icon">
-          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${e.viewBox || '0 0 16 16'}" fill="currentColor">'${e.icon}</svg>
+          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
+            e.viewBox || '0 0 16 16'
+          }" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
         </a>
         <div v-else v-bind:href="href" class="icon">
-          <svg v-on:click="onclick()" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${e.viewBox || '0 0 16 16'}" fill="currentColor">'${e.icon}</svg>
+          <svg v-on:click="onclick()" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
+            e.viewBox || '0 0 16 16'
+          }" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
         </div>{{onclick}}
       `,
@@ -69,7 +78,7 @@ initLanguage(function(CURRENT_LANG) {
   })
 
   new Vue({
-    el  : 'nav',
+    el: 'nav',
     data: {
       lang: CURRENT_LANG,
       ...CONTENT[CURRENT_LANG].nav,
@@ -82,53 +91,63 @@ initLanguage(function(CURRENT_LANG) {
         location.href = '?lang=' + (this.lang == 'zh-tw' ? 'en' : 'zh-tw')
       },
       scrollToTop: function () {
-        $('html, body').animate({
-          scrollTop: 0
-        }, 500)
+        $('html, body').animate(
+          {
+            scrollTop: 0,
+          },
+          500
+        )
       },
-    }
-  });
+    },
+  })
 
   new Vue({
-    el  : '#about',
+    el: '#about',
     data: {
       title: CONTENT[CURRENT_LANG].nav.sections.about,
       ...CONTENT[CURRENT_LANG].about,
     },
-  });
+  })
 
   new Vue({
-    el  : '#skill',
+    el: '#skill',
     data: {
       title: CONTENT[CURRENT_LANG].nav.sections.skill,
       ...CONTENT[CURRENT_LANG].skill,
     },
     methods: {
-      msg: function(score) {
-        var msg = ['no idea', 'learned', 'average', 'above average', 'great', 'awesome'];
+      msg: function (score) {
+        var msg = [
+          'no idea',
+          'learned',
+          'average',
+          'above average',
+          'great',
+          'awesome',
+        ]
         return msg[score]
-      }
-    }
-  });
+      },
+    },
+  })
 
   new Vue({
-    el  : '#experience',
+    el: '#experience',
     data: {
       title: CONTENT[CURRENT_LANG].nav.sections.experience,
       ...CONTENT[CURRENT_LANG].experience,
     },
-  });
+  })
 
   new Vue({
-    el  : '#portfolio',
+    el: '#portfolio',
     data: {
       title: CONTENT[CURRENT_LANG].nav.sections.portfolio,
       ...CONTENT[CURRENT_LANG].portfolio,
     },
     methods: {
-      img: function(img) {
+      img: function (img) {
         return './static/img/portfolio/' + img
-      }
-    }
-  });
-});
+      },
+    },
+  })
+})

@@ -1,122 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Emma Chung</title>
-  <link rel="SHORTCUT ICON" href="./static/img/favicons/favicon.png"/>
-  <meta property="og:title" content="Emma Chung" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://emma2334.github.io/" />
-  <meta property="og:image" content="https://emma2334.github.io/images/favicons/og.jpg" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=Noto+Sans+TC:400,800" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="./static/style/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="./static/style/normalize.min.css">
-  <link rel="stylesheet" href="./static/style/index.css">
-  <script src="./static/js/jquery.min.js"></script>
-  <script src="./static/js/vue.min.js"></script>
-</head>
-<body>
-  <div id="preload"></div>
-  <section id="home">
-    <header>
-      <h1>Emma Chung</h1>
-      <p>
-        <a href="https://github.com/emma2334">GitHub</a>．
-        <a href="https://emma2334.wordpress.com">Blog</a>
-      </p>
-    </header>
-    <a id="scroll-down-notice" href="#about"></a>
-  </section>
-  <nav>
-    <div class="name" v-on:click="scrollToTop">Emma Chung</div>
-    <div class="menu">
-      <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emma Chung</title>
+    <link rel="SHORTCUT ICON" href="./static/img/favicons/favicon.png" />
+    <meta property="og:title" content="Emma Chung" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://emma2334.github.io/" />
+    <meta
+      property="og:image"
+      content="https://emma2334.github.io/images/favicons/og.jpg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Noto+Sans+TC:400,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./static/style/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="./static/style/normalize.min.css" />
+    <link rel="stylesheet" href="./static/style/index.css" />
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="./static/js/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="preload"></div>
+    <section id="home">
+      <header>
+        <h1>Emma Chung</h1>
+        <p>
+          <a href="https://github.com/emma2334">GitHub</a>．
+          <a href="https://emma2334.wordpress.com">Blog</a>
+        </p>
+      </header>
+      <a id="scroll-down-notice" href="#about"></a>
+    </section>
+    <nav>
+      <div class="name" v-on:click="scrollToTop">Emma Chung</div>
+      <div class="menu">
+        <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
+      </div>
+      <icon-global class="lang" v-bind:onclick="switchLang">
+        <input
+          type="radio"
+          name="lang"
+          id="zh-tw"
+          v-bind:checked="lang == 'zh-tw'"
+          v-on:change="changeLang('zh-tw')"
+        />
+        <label for="zh-tw">中文</label>
+        /
+        <input
+          type="radio"
+          name="lang"
+          id="en"
+          v-bind:checked="lang == 'en'"
+          v-on:change="changeLang('en')"
+        />
+        <label for="en">English</label>
+      </icon-global>
+    </nav>
+    <div class="content">
+      <section id="about">
+        <div class="container">
+          <h2>{{title}}</h2>
+          <div class="row">
+            <div class="col-md-3">
+              <img
+                src="./static/img/profile.jpg"
+                alt="profile pic"
+                class="rounded-circle img-thumbnail img-responsive"
+              />
+            </div>
+            <div class="col-md-9">
+              <p v-for="i in info">{{ i }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="skill">
+        <div class="container">
+          <h2>{{title}}</h2>
+          <div class="row">
+            <div v-for="(skill, type) in skills" class="wrapper col-md-6">
+              <h3>{{type}}</h3>
+              <ul>
+                <li v-for="(score, name) in skill">
+                  {{name}}
+                  <span
+                    v-bind:data-score="score"
+                    v-bind:data-msg="msg(score)"
+                  ></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experience">
+        <div class="container">
+          <h2>{{title}}</h2>
+          <div class="row">
+            <div v-for="e in list.slice().reverse()" class="wrapper col-12">
+              <i class="duration">{{e.duration}}</i>
+              <h3>
+                {{e.title}}，<a v-bind:href="e.company.url" target="_blank"
+                  >{{e.company.name}}</a
+                >
+              </h3>
+              <ul>
+                <li v-for="i in e.info" v-html="i"></li>
+              </ul>
+              <div class="tech">
+                <span v-for="t in e.tech" class="tag">{{t}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio">
+        <div class="container">
+          <h2>{{title}}</h2>
+          <div class="row">
+            <div class="wrapper col-md-6" v-for="e in list.slice().reverse()">
+              <div class="card">
+                <div
+                  v-if="e.img"
+                  v-bind:style="'background-image: url(' + img(e.img) + ');'"
+                  class="img"
+                ></div>
+                <div class="info">
+                  <span class="type">{{e.type}}</span>
+                  <h3>
+                    {{e.title}}
+                    <icon-github
+                      v-if="e.github"
+                      v-bind:href="e.github"
+                      target="_blank"
+                    ></icon-github>
+                    <icon-link
+                      v-if="e.link"
+                      v-bind:href="e.link"
+                      target="_blank"
+                    ></icon-link>
+                  </h3>
+                  <p>{{e.des}}</p>
+                </div>
+                <div class="tags">
+                  <span v-for="tag in e.tags" class="tag reverse">{{tag}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <icon-global class="lang" v-bind:onclick="switchLang">
-      <input type="radio" name="lang" id="zh-tw" v-bind:checked="lang == 'zh-tw'" v-on:change="changeLang('zh-tw')">
-      <label for="zh-tw">中文</label>
-      /
-      <input type="radio" name="lang" id="en" v-bind:checked="lang == 'en'" v-on:change="changeLang('en')">
-      <label for="en">English</label>
-    </icon-global>
-  </nav>
-  <div class="content">
-    <section id="about">
-      <div class="container">
-        <h2>{{title}}</h2>
-        <div class="row">
-          <div class="col-md-3">
-            <img src="./static/img/profile.jpg" alt="profile pic" class="rounded-circle img-thumbnail img-responsive">
-          </div>
-          <div class="col-md-9">
-            <p v-for="i in info">{{ i }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="skill">
-      <div class="container">
-        <h2>{{title}}</h2>
-        <div class="row">
-          <div v-for="(skill, type) in skills" class="wrapper col-md-6">
-            <h3>{{type}}</h3>
-            <ul>
-              <li v-for="(score, name) in skill">
-                {{name}}
-                <span v-bind:data-score="score" v-bind:data-msg="msg(score)"></span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="experience">
-      <div class="container">
-        <h2>{{title}}</h2>
-        <div class="row">
-          <div v-for="e in list.slice().reverse()" class="wrapper col-12">
-            <i class="duration">{{e.duration}}</i>
-            <h3>{{e.title}}，<a v-bind:href="e.company.url" target="_blank">{{e.company.name}}</a></h3>
-            <ul>
-              <li v-for="i in e.info" v-html="i"></li>
-            </ul>
-            <div class="tech">
-              <span v-for="t in e.tech" class="tag">{{t}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="portfolio">
-      <div class="container">
-        <h2>{{title}}</h2>
-        <div class="row">
-          <div class=" wrapper col-md-6" v-for="e in list.slice().reverse()">
-            <div class="card">
-              <div v-if="e.img" v-bind:style="'background-image: url(' + img(e.img) + ');'" class="img"></div>
-              <div class="info">
-                <span class="type">{{e.type}}</span>
-                <h3>
-                  {{e.title}}
-                  <icon-github v-if="e.github" v-bind:href="e.github"></icon-github>
-                  <icon-link v-if="e.link" v-bind:href="e.link"></icon-link>
-                </h3>
-                <p>{{e.des}}</p>
-              </div>
-              <div class="tags">
-                <span v-for="tag in e.tags" class="tag reverse">{{tag}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 
-  <script src="./static/data/content.js"></script>
-  <script src="./static/js/view.js"></script>
-  <script src="./static/js/index.js"></script>
-</body>
+    <script src="./static/data/content.js"></script>
+    <script src="./static/js/view.js"></script>
+    <script src="./static/js/index.js"></script>
+  </body>
 </html>

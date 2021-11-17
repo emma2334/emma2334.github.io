@@ -5,8 +5,8 @@ var CONTENT = {
         about: '關於我',
         skill: '技能',
         experience: '工作經驗',
-        portfolio:'作品集',
-      }
+        portfolio: '作品集',
+      },
     },
     about: {
       info: [
@@ -33,8 +33,8 @@ var CONTENT = {
         },
         tools: {
           Git: 3,
-        }
-      }
+        },
+      },
     },
     experience: {
       list: [
@@ -111,7 +111,8 @@ var CONTENT = {
           des: '在設定 WordPress 導覽列時新增文章分類只需點擊勾選就可以設定是否導到該分類最新文章',
           tags: ['wordpress'],
           link: 'https://wordpress.org/plugins/redirect-to-latest-post-in-category/',
-          github: 'https://github.com/emma2334/wp-redirect-to-category-latest-post',
+          github:
+            'https://github.com/emma2334/wp-redirect-to-category-latest-post',
         },
         {
           title: '動漫屋閱讀輔助器',
@@ -121,24 +122,24 @@ var CONTENT = {
           tags: ['javascript'],
           link: 'https://emma2334.github.io/DM5-Viewer/',
           github: 'https://github.com/emma2334/DM5-Viewer',
-        }
-      ]
+        },
+      ],
     },
   },
-  'en': {
+  en: {
     nav: {
       sections: {
         about: 'about me',
         skill: 'skills',
         experience: 'experience',
-        portfolio:'portfolio',
-      }
+        portfolio: 'portfolio',
+      },
     },
     about: {
       info: [
-        'Hi, I\'m Emma, a full stack web developer, mostly working on frontend development.',
-        'I did an exchange program to Poland in 2016 for a half year. I\'m always confident with embracing new things, hence there were more priceless experiences than culture shock. Many first times happened in this duration: skiing, sky diving, first solo long distance trip, couch surfing... and the most precious of all, taking a blah blah car from someone who shared no common language with me. Thanks to Google translation, it turned out to be an extremely wonderful memory',
-        'learning new things, it won\'t be a tough process. I\'m eager to be challenged and improve! Excepting IT field, I also find interest in cultures and arts.'
+        "Hi, I'm Emma, a full stack web developer, mostly working on frontend development.",
+        "I did an exchange program to Poland in 2016 for a half year. I'm always confident with embracing new things, hence there were more priceless experiences than culture shock. Many first times happened in this duration: skiing, sky diving, first solo long distance trip, couch surfing... and the most precious of all, taking a blah blah car from someone who shared no common language with me. Thanks to Google translation, it turned out to be an extremely wonderful memory",
+        "learning new things, it won't be a tough process. I'm eager to be challenged and improve! Excepting IT field, I also find interest in cultures and arts.",
       ],
     },
     skill: {
@@ -159,8 +160,8 @@ var CONTENT = {
         },
         tools: {
           Git: 3,
-        }
-      }
+        },
+      },
     },
     experience: {
       list: [
@@ -216,7 +217,7 @@ var CONTENT = {
             'Develop and maintain both api and web frontend in <a href="https://www.popdaily.com.tw" target="_blank">Popdaily</a>',
             'Involved in development of food map, topic, etc',
             'Participated in refactor of react and AMP version',
-            'Make sure user experience keeps well in both browser and web app'
+            'Make sure user experience keeps well in both browser and web app',
           ],
         },
       ],
@@ -239,7 +240,8 @@ var CONTENT = {
           des: 'Setup whether navbar links redirect to the latest post of an category by only a click on checkbox',
           tags: ['wordpress'],
           link: 'https://wordpress.org/plugins/redirect-to-latest-post-in-category/',
-          github: 'https://github.com/emma2334/wp-redirect-to-category-latest-post',
+          github:
+            'https://github.com/emma2334/wp-redirect-to-category-latest-post',
         },
         {
           title: 'DM5 Viewer',
@@ -249,8 +251,8 @@ var CONTENT = {
           tags: ['javascript'],
           link: 'https://emma2334.github.io/DM5-Viewer/',
           github: 'https://github.com/emma2334/DM5-Viewer',
-        }
-      ]
+        },
+      ],
     },
-  }
+  },
 }
