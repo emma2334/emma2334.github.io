@@ -142,9 +142,31 @@ initLanguage(function (CURRENT_LANG) {
 
   new Vue({
     el: '#experience',
-    data: {
-      title: CONTENT[CURRENT_LANG].nav.sections.experience,
-      ...CONTENT[CURRENT_LANG].experience,
+    data: { title: CONTENT[CURRENT_LANG].nav.sections.experience, list: null },
+    mounted() {
+      const $this = this
+      fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/1MzCg-NzPuSWk0aNjkw5dVQv1vJKBIWuOCTPjBNe0P6c/values/${CURRENT_LANG}?key=AIzaSyANNuXLVPxlg7vylBwVU0DUS-ypFNVMs8s`
+      )
+        .then(res => res.json())
+        .then(res => ($this.list = res.values))
+    },
+    methods: {
+      formatting: data => {
+        const type = ['company', 'url', 'title', 'duration', 'tech', 'info']
+        return type.reduce((object, cur, index) => {
+          object[cur] = data[index]
+          return object
+        }, {})
+      },
+    },
+  })
+
+  Vue.component('Experience', {
+    props: ['company', 'url', 'title', 'duration', 'tech', 'info'],
+    methods: {
+      parseContent: e => e.split('\n'),
+      parseTags: string => string.split(',').map(e => e.trim()),
     },
   })
 
@@ -152,7 +174,7 @@ initLanguage(function (CURRENT_LANG) {
     el: '#portfolio',
     data: { title: CONTENT[CURRENT_LANG].nav.sections.portfolio, list: null },
     mounted() {
-      $this = this
+      const $this = this
       fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/1WGBd9NkivW18kFimeYAyGIeDD_ewZ7asxnV4pzXt7G8/values/${CURRENT_LANG}?key=AIzaSyANNuXLVPxlg7vylBwVU0DUS-ypFNVMs8s`
       )

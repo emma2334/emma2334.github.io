@@ -46,14 +46,14 @@
     <nav>
       <div class="name" v-on:click="scrollToTop">Emma Chung</div>
       <div class="menu">
-        <a v-for="(e, key) in sections" v-bind:href="'#'+key">{{ e }}</a>
+        <a v-for="(e, key) in sections" :href="'#'+key">{{ e }}</a>
       </div>
-      <icon-global class="lang" v-bind:onclick="switchLang">
+      <icon-global class="lang" :onclick="switchLang">
         <input
           type="radio"
           name="lang"
           id="zh-tw"
-          v-bind:checked="lang == 'zh-tw'"
+          :checked="lang == 'zh-tw'"
           v-on:change="changeLang('zh-tw')"
         />
         <label for="zh-tw">中文</label>
@@ -62,7 +62,7 @@
           type="radio"
           name="lang"
           id="en"
-          v-bind:checked="lang == 'en'"
+          :checked="lang == 'en'"
           v-on:change="changeLang('en')"
         />
         <label for="en">English</label>
@@ -95,10 +95,7 @@
               <ul>
                 <li v-for="(score, name) in skill">
                   {{name}}
-                  <span
-                    v-bind:data-score="score"
-                    v-bind:data-msg="msg(score)"
-                  ></span>
+                  <span :data-score="score" :data-msg="msg(score)"></span>
                 </li>
               </ul>
             </div>
@@ -109,20 +106,24 @@
         <div class="container">
           <h2>{{title}}</h2>
           <div class="row">
-            <div v-for="e in list.slice().reverse()" class="wrapper col-12">
-              <i class="duration">{{e.duration}}</i>
-              <h3>
-                {{e.title}}，<a v-bind:href="e.company.url" target="_blank"
-                  >{{e.company.name}}</a
-                >
-              </h3>
-              <ul>
-                <li v-for="i in e.info" v-html="i"></li>
-              </ul>
-              <div class="tech">
-                <span v-for="t in e.tech" class="tag">{{t}}</span>
+            <Experience
+              inline-template
+              v-for="e in list"
+              v-bind="formatting(e)"
+            >
+              <div class="wrapper col-12">
+                <i class="duration">{{duration}}</i>
+                <h3>
+                  {{title}}，<a :href="url" target="_blank">{{company}}</a>
+                </h3>
+                <ul>
+                  <li v-for="i in parseContent(info)" v-html="i"></li>
+                </ul>
+                <div class="tech">
+                  <span v-for="t in parseTags(tech)" class="tag">{{t}}</span>
+                </div>
               </div>
-            </div>
+            </Experience>
           </div>
         </div>
       </section>
@@ -130,12 +131,12 @@
         <div class="container">
           <h2>{{title}}</h2>
           <div class="row">
-            <div class="wrapper col-md-6" v-for="e in list">
-              <Card inline-template v-bind="formatting(e)">
+            <Card inline-template v-for="e in list" v-bind="formatting(e)">
+              <div class="wrapper col-md-6">
                 <div class="card">
                   <div
                     v-if="img"
-                    v-bind:style="'background-image: url(' + imgUrl + ');'"
+                    :style="'background-image: url(' + imgUrl + ');'"
                     class="img"
                   ></div>
                   <div class="info">
@@ -155,8 +156,8 @@
                     >
                   </div>
                 </div>
-              </Card>
-            </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
