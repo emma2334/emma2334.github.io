@@ -44,9 +44,14 @@
       <a id="scroll-down-notice" href="#about"></a>
     </section>
     <nav>
-      <div class="name" v-on:click="scrollToTop">Emma Chung</div>
+      <div class="name" v-on:click="smoothScroll('#home')">Emma Chung</div>
       <div class="menu">
-        <a v-for="(e, key) in sections" :href="'#'+key">{{ e }}</a>
+        <a
+          v-for="(e, key) in sections"
+          :href="`#${key}`"
+          v-on:click.prevent="smoothScroll(`#${key}`)"
+          >{{ e }}</a
+        >
       </div>
       <icon-global class="lang" :onclick="switchLang">
         <language id="zh-tw">中文</language>

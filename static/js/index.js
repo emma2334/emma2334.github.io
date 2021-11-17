@@ -1,13 +1,4 @@
 ;(function () {
-  // Smooth scroll
-  $(document).on('click', 'a[href^="#"]', e => {
-    e.preventDefault()
-    $('html, body').animate(
-      { scrollTop: $($.attr(e.currentTarget, 'href')).offset().top + 1 },
-      500
-    )
-  })
-
   // Manage animation of cover section and navbar
   new IntersectionObserver(
     entries => {

@@ -143,6 +143,7 @@
       scrollToTop: () => {
         $('html, body').animate({ scrollTop: 0 }, 500)
       },
+      smoothScroll,
     },
   })
 
@@ -189,4 +190,17 @@
       parseTags: string => string.split(',').map(e => e.trim()),
     },
   })
+
+  /* Shared functions */
+  function smoothScroll(target, duration = 300) {
+    if (duration <= 0) return
+    const element = document.documentElement
+    const to = document.querySelector(target).offsetTop
+    const perTick = ((to - element.scrollTop) / duration) * 10
+
+    setTimeout(function () {
+      element.scrollTop += perTick
+      if (element.scrollTop !== to) smoothScroll(target, duration - 10)
+    }, 10)
+  }
 })()
