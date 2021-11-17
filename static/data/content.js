@@ -15,27 +15,6 @@ var CONTENT = {
         '大學時期在學長的介紹下第一次參加了資訊研討會—— 2013 年的 COSCUP，受到社群與開源精神的感召，至今仍以與會者或志工的身份穿梭大小研討會間。雖然技術還不甚純熟，但認為學習新知識是一件愉悅的事情，正在以自己的步調成長中。除了技術外，對人文和藝術領域也相當感興趣。',
       ],
     },
-    skill: {
-      skills: {
-        frontend: {
-          CSS: 4,
-          JavaScript: 3,
-          React: 2,
-        },
-        backend: {
-          'Node.js': 2,
-          Rails: 1,
-          PHP: 1,
-        },
-        others: {
-          MongoDB: 2,
-          'Meteor.js': 2,
-        },
-        tools: {
-          Git: 3,
-        },
-      },
-    },
     experience: {
       list: [
         {
@@ -93,38 +72,6 @@ var CONTENT = {
         },
       ],
     },
-    portfolio: {
-      list: [
-        {
-          title: '台灣登革熱地圖',
-          type: '靜態網站',
-          img: 'dengue_tw.png',
-          des: '利用 D3.js 將資料視覺化，以判斷各地區登革熱嚴重性（demo 頁資料僅更新至 2018/6）',
-          tags: ['D3.js'],
-          link: 'https://emma2334.github.io/dengue_tw/',
-          github: 'https://github.com/emma2334/dengue_tw',
-        },
-        {
-          title: '導回分類最新文章',
-          type: 'WordPress 插件',
-          img: 'RCLP.png',
-          des: '在設定 WordPress 導覽列時新增文章分類只需點擊勾選就可以設定是否導到該分類最新文章',
-          tags: ['wordpress'],
-          link: 'https://wordpress.org/plugins/redirect-to-latest-post-in-category/',
-          github:
-            'https://github.com/emma2334/wp-redirect-to-category-latest-post',
-        },
-        {
-          title: '動漫屋閱讀輔助器',
-          type: 'js 腳本',
-          img: 'dm5-reader.png',
-          des: '大學時為了看漫畫寫的腳本，把一些在手機漫畫 app 的優點整併進腳本（內容展開、自動滾動、自動換章）',
-          tags: ['javascript'],
-          link: 'https://emma2334.github.io/DM5-Viewer/',
-          github: 'https://github.com/emma2334/DM5-Viewer',
-        },
-      ],
-    },
   },
   en: {
     nav: {
@@ -141,27 +88,6 @@ var CONTENT = {
         "I did an exchange program to Poland in 2016 for a half year. I'm always confident with embracing new things, hence there were more priceless experiences than culture shock. Many first times happened in this duration: skiing, sky diving, first solo long distance trip, couch surfing... and the most precious of all, taking a blah blah car from someone who shared no common language with me. Thanks to Google translation, it turned out to be an extremely wonderful memory",
         "learning new things, it won't be a tough process. I'm eager to be challenged and improve! Excepting IT field, I also find interest in cultures and arts.",
       ],
-    },
-    skill: {
-      skills: {
-        frontend: {
-          CSS: 4,
-          JavaScript: 3,
-          React: 2,
-        },
-        backend: {
-          'Node.js': 2,
-          Rails: 1,
-          PHP: 1,
-        },
-        others: {
-          MongoDB: 2,
-          'Meteor.js': 2,
-        },
-        tools: {
-          Git: 3,
-        },
-      },
     },
     experience: {
       list: [
@@ -219,38 +145,6 @@ var CONTENT = {
             'Participated in refactor of react and AMP version',
             'Make sure user experience keeps well in both browser and web app',
           ],
-        },
-      ],
-    },
-    portfolio: {
-      list: [
-        {
-          title: 'Taiwan dengue map',
-          type: 'static web',
-          img: 'dengue_tw.png',
-          des: 'Visualize data with D3.js to see dengue infection severity in Taiwan (data was only updated to 2018/6 in demo page)',
-          tags: ['D3.js'],
-          link: 'https://emma2334.github.io/dengue_tw/',
-          github: 'https://github.com/emma2334/dengue_tw',
-        },
-        {
-          title: 'Redirect to latest post',
-          type: 'WordPress plugin',
-          img: 'RCLP.png',
-          des: 'Setup whether navbar links redirect to the latest post of an category by only a click on checkbox',
-          tags: ['wordpress'],
-          link: 'https://wordpress.org/plugins/redirect-to-latest-post-in-category/',
-          github:
-            'https://github.com/emma2334/wp-redirect-to-category-latest-post',
-        },
-        {
-          title: 'DM5 Viewer',
-          type: 'user script',
-          img: 'dm5-reader.png',
-          des: 'In order to read comics in a lazy way, I wrote a script which contains those awesome features in comic apps when I was in college',
-          tags: ['javascript'],
-          link: 'https://emma2334.github.io/DM5-Viewer/',
-          github: 'https://github.com/emma2334/DM5-Viewer',
         },
       ],
     },

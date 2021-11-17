@@ -55,24 +55,21 @@ initLanguage(function (CURRENT_LANG) {
     Vue.component('icon-' + e.type, {
       props: {
         href: String,
-        onclick: {
-          type: Function,
-          default: function () {},
-        },
+        onclick: Function,
       },
       template: `
-        <a v-if="href" v-bind:href="href" class="icon">
+        <a v-if="href" :href="href" class="icon">
           <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
             e.viewBox || '0 0 16 16'
           }" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
         </a>
-        <div v-else v-bind:href="href" class="icon">
+        <div v-else :href="href" class="icon">
           <svg v-on:click="onclick()" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="${
             e.viewBox || '0 0 16 16'
           }" fill="currentColor">'${e.icon}</svg>
           <slot></slot>
-        </div>{{onclick}}
+        </div>
       `,
     })
   })
@@ -91,12 +88,7 @@ initLanguage(function (CURRENT_LANG) {
         location.href = '?lang=' + (this.lang == 'zh-tw' ? 'en' : 'zh-tw')
       },
       scrollToTop: function () {
-        $('html, body').animate(
-          {
-            scrollTop: 0,
-          },
-          500
-        )
+        $('html, body').animate({ scrollTop: 0 }, 500)
       },
     },
   })
@@ -113,7 +105,25 @@ initLanguage(function (CURRENT_LANG) {
     el: '#skill',
     data: {
       title: CONTENT[CURRENT_LANG].nav.sections.skill,
-      ...CONTENT[CURRENT_LANG].skill,
+      skills: {
+        frontend: {
+          CSS: 4,
+          JavaScript: 3,
+          React: 2,
+        },
+        backend: {
+          'Node.js': 2,
+          Rails: 1,
+          PHP: 1,
+        },
+        others: {
+          MongoDB: 2,
+          'Meteor.js': 2,
+        },
+        tools: {
+          Git: 3,
+        },
+      },
     },
     methods: {
       msg: function (score) {
@@ -140,14 +150,34 @@ initLanguage(function (CURRENT_LANG) {
 
   new Vue({
     el: '#portfolio',
-    data: {
-      title: CONTENT[CURRENT_LANG].nav.sections.portfolio,
-      ...CONTENT[CURRENT_LANG].portfolio,
+    data: { title: CONTENT[CURRENT_LANG].nav.sections.portfolio, list: null },
+    mounted() {
+      $this = this
+      fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/1WGBd9NkivW18kFimeYAyGIeDD_ewZ7asxnV4pzXt7G8/values/${CURRENT_LANG}?key=AIzaSyANNuXLVPxlg7vylBwVU0DUS-ypFNVMs8s`
+      )
+        .then(res => res.json())
+        .then(res => ($this.list = res.values))
     },
     methods: {
-      img: function (img) {
-        return './static/img/portfolio/' + img
+      formatting: data => {
+        const type = ['title', 'type', 'img', 'des', 'tags', 'github', 'link']
+        return type.reduce((object, cur, index) => {
+          object[cur] = data[index]
+          return object
+        }, {})
       },
+      parseTags: string => string.split(',').map(e => e.trim()),
+    },
+  })
+
+  Vue.component('Card', {
+    props: ['title', 'type', 'img', 'des', 'tags', 'github', 'link'],
+    methods: {
+      parseTags: string => string.split(',').map(e => e.trim()),
+    },
+    computed: {
+      imgUrl: v => `./static/img/portfolio/${v.img}`,
     },
   })
 })

@@ -130,34 +130,32 @@
         <div class="container">
           <h2>{{title}}</h2>
           <div class="row">
-            <div class="wrapper col-md-6" v-for="e in list.slice().reverse()">
-              <div class="card">
-                <div
-                  v-if="e.img"
-                  v-bind:style="'background-image: url(' + img(e.img) + ');'"
-                  class="img"
-                ></div>
-                <div class="info">
-                  <span class="type">{{e.type}}</span>
-                  <h3>
-                    {{e.title}}
-                    <icon-github
-                      v-if="e.github"
-                      v-bind:href="e.github"
-                      target="_blank"
-                    ></icon-github>
-                    <icon-link
-                      v-if="e.link"
-                      v-bind:href="e.link"
-                      target="_blank"
-                    ></icon-link>
-                  </h3>
-                  <p>{{e.des}}</p>
+            <div class="wrapper col-md-6" v-for="e in list">
+              <Card inline-template v-bind="formatting(e)">
+                <div class="card">
+                  <div
+                    v-if="img"
+                    v-bind:style="'background-image: url(' + imgUrl + ');'"
+                    class="img"
+                  ></div>
+                  <div class="info">
+                    <span class="type">{{type}}</span>
+                    <h3>
+                      {{title}}
+                      <icon-github v-if="github" :href="github" target="_blank">
+                      </icon-github>
+                      <icon-link v-if="link" :href="link" target="_blank">
+                      </icon-link>
+                    </h3>
+                    <p>{{des}}</p>
+                  </div>
+                  <div class="tags">
+                    <span v-for="tag in parseTags(tags)" class="tag reverse"
+                      >{{tag}}</span
+                    >
+                  </div>
                 </div>
-                <div class="tags">
-                  <span v-for="tag in e.tags" class="tag reverse">{{tag}}</span>
-                </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
