@@ -173,8 +173,13 @@ a:visited {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9100 !important;
+  z-index: 2;
   background: white url(../img/preloader.gif) no-repeat center;
+}
+
+#preload.hide {
+  opacity: 0;
+  transition: opacity 0.8s;
 }
 
 /* ------------------------
@@ -184,7 +189,7 @@ a:visited {
 ------------------------ */
 #home {
   height: 100vh;
-  background: url('../img/cover.jpg') 50% 50% no-repeat;
+  background: #9d9d9d url('../img/cover.jpg') 50% 50% no-repeat;
   -moz-background-size: cover;
   background-size: cover;
 }
@@ -421,7 +426,7 @@ nav {
   top: 0;
   background: #383838;
   color: #fff;
-  z-index: 999;
+  z-index: 1;
   -webkit-transition: transform 0.8s;
   -webkit-transition: -webkit-transform 0.8s;
   transition: -webkit-transform 0.8s;
@@ -616,21 +621,21 @@ nav .lang label:hover {
   Skill
 
 ------------------------ */
-#skill h3 {
+#skills h3 {
   text-transform: uppercase;
   padding-bottom: 0.375em;
   border-bottom: 1px solid #dcdcdc;
 }
 
-#skill ul {
+#skills ul {
   padding-left: 0;
 }
 
-#skill li {
+#skills li {
   list-style: none;
 }
 
-#skill [data-score] {
+#skills [data-score] {
   position: relative;
   width: 40%;
   height: 1em;
@@ -655,31 +660,36 @@ nav .lang label:hover {
   transition: background-position-x 0.8s;
 }
 
-#skill.active [data-score='1'] {
+#skills.active [data-score='1'] {
   background-position-x: 80%;
 }
 
-#skill.active [data-score='2'] {
+#skills.active [data-score='2'] {
   background-position-x: 60%;
 }
 
-#skill.active [data-score='3'] {
+#skills.active [data-score='3'] {
   background-position-x: 40%;
 }
 
-#skill.active [data-score='4'] {
+#skills.active [data-score='4'] {
   background-position-x: 20%;
 }
 
-#skill.active [data-score='5'] {
+#skills.active [data-score='5'] {
   background-position-x: 0;
 }
 
-#skill [data-score]:before {
+#skills [data-score]:before {
   content: attr(data-level);
   position: absolute;
   top: 0;
-  left: 8px;
+  left: 0;
+  width: 100%;
+  padding: 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 0.8rem;
   line-height: 1rem;
   text-transform: capitalize;
