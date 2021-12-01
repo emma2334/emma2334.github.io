@@ -128,7 +128,7 @@
               <div class="card">
                 <div
                   v-if="img"
-                  :style="`background-image: url(./static/img/portfolio/${img});`"
+                  :style="`background-image: url(${getSmallerImg(img)});`"
                   class="img"
                 ></div>
                 <div class="info">

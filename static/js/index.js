@@ -175,6 +175,9 @@
         )
       ),
     },
+    methods: {
+      getSmallerImg: url => url.replace(/(.*\/\S+)(\..*)/, '$1l$2'),
+    },
   })
 
   /* Root */
@@ -243,6 +246,8 @@
           this.experience = data.experience
           this.portfolio = data.portfolio
 
+          // Remove active class cause by intersection observer
+          document.querySelector('#home').classList.remove('active')
           // Remove preloader
           setTimeout(() => {
             document.querySelector('#preload').classList.add('hide')
@@ -250,7 +255,7 @@
             setTimeout(() => {
               document.querySelector('#preload').style.zIndex = -1
             }, 1000)
-          }, 500)
+          }, 2000)
         })
     },
     methods: {
