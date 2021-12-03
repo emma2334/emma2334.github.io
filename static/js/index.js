@@ -243,7 +243,7 @@
             { about: [], experience: [], portfolio: [] }
           )
           this.about = data.about.flat()[0]
-          this.experience = data.experience
+          this.experience = data.experience.reverse()
           this.portfolio = data.portfolio
 
           // Remove active class cause by intersection observer
